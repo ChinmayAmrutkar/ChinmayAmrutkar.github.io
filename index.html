@@ -74,8 +74,8 @@
         }
         /* Card styling */
         .card {
-            /* CHANGE: Added group class for hover effects on children */
-            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-1 group;
+            /* FIX: Removed 'group' from @apply - it's applied directly in HTML */
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-1;
         }
         /* Navigation link styling */
         .nav-link {
@@ -101,18 +101,18 @@
         .animate-on-scroll {
             opacity: 0; /* Start hidden */
         }
-        /* CHANGE: Style for project image hover effect */
+        /* Style for project image hover effect */
         .project-image {
             @apply w-full h-52 object-cover transition-transform duration-300 ease-out;
         }
-        .card:hover .project-image {
+        /* Use group-hover variant directly in HTML if needed, or define specific hover for card */
+         .card:hover .project-image {
              @apply scale-105; /* Zoom in image on card hover */
         }
 
     </style>
 </head>
 <body>
-
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-primary-dark hover:opacity-80 transition-opacity">
@@ -203,22 +203,22 @@
             <div class="container mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-neutral-dark mb-16">Technical Toolkit</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up">
+                    <div class="card p-6 text-center animate-on-scroll group" data-animation="fade-in-up">
                         <i class="fas fa-terminal text-4xl text-primary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">Languages</h3>
                         <p class="text-neutral-medium">Python, C++, C, Java</p>
                     </div>
-                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="card p-6 text-center animate-on-scroll group" data-animation="fade-in-up" style="animation-delay: 0.1s;">
                          <i class="fas fa-eye text-4xl text-secondary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">AI & CV</h3>
                         <p class="text-neutral-medium">PyTorch, TensorFlow, OpenCV, PCL, Object Detection, SLAM</p>
                     </div>
-                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="card p-6 text-center animate-on-scroll group" data-animation="fade-in-up" style="animation-delay: 0.2s;">
                          <i class="fas fa-robot text-4xl text-primary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">Robotics</h3>
                         <p class="text-neutral-medium">ROS, ROS2, MATLAB, Motion Planning, Kinematics, Control</p>
                     </div>
-                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="card p-6 text-center animate-on-scroll group" data-animation="fade-in-up" style="animation-delay: 0.3s;">
                          <i class="fas fa-laptop-code text-4xl text-secondary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">Tools & Sim</h3>
                         <p class="text-neutral-medium">Git, Linux, Docker, Gazebo, VTD, Adams, SolidWorks</p>
@@ -231,9 +231,8 @@
             <div class="container mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-neutral-dark mb-16">Featured Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                    <div class="card animate-on-scroll" data-animation="fade-in-up">
-                        <div class="overflow-hidden"> <img src="https://placehold.co/600x400/1e3a8a/e0f2fe?text=LiDAR+%26+Vision" alt="3D Object Detection Project" class="project-image">
+                    <div class="card animate-on-scroll group" data-animation="fade-in-up">
+                        <div class="overflow-hidden rounded-t-xl"> <img src="https://placehold.co/600x400/1e3a8a/e0f2fe?text=LiDAR+%26+Vision" alt="3D Object Detection Project" class="project-image">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-neutral-dark mb-3">Real-Time 3D Object Detection & Fusion</h3>
@@ -245,11 +244,10 @@
                                 <span class="inline-block bg-secondary-light text-secondary-dark text-xs font-medium px-3 py-1 rounded-full">Sensor Fusion</span>
                                 <span class="inline-block bg-neutral-light text-neutral-medium text-xs font-medium px-3 py-1 rounded-full">LiDAR</span>
                             </div>
-                             </div>
+                        </div>
                     </div>
-
-                    <div class="card animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
-                         <div class="overflow-hidden">
+                    <div class="card animate-on-scroll group" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                         <div class="overflow-hidden rounded-t-xl">
                             <img src="https://placehold.co/600x400/047857/a7f3d0?text=Robotic+Arm+Nav" alt="MyCobot Maze Project" class="project-image">
                          </div>
                         <div class="p-6">
@@ -263,11 +261,10 @@
                                 <span class="inline-block bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">MATLAB</span>
                                 <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">Kinematics</span>
                             </div>
-                            </div>
+                        </div>
                     </div>
-
-                    <div class="card animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.2s;">
-                         <div class="overflow-hidden">
+                    <div class="card animate-on-scroll group" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                         <div class="overflow-hidden rounded-t-xl">
                             <img src="https://placehold.co/600x400/d97706/fef3c7?text=Waste+Sorting+AI" alt="Waste Sorting Arm Project" class="project-image">
                          </div>
                         <div class="p-6">
@@ -281,9 +278,9 @@
                                  <span class="inline-block bg-gray-100 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">Prototyping</span>
                                  <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Sustainability</span>
                              </div>
-                            </div>
+                        </div>
                     </div>
-                    </div>
+                </div>
                  <p class="text-center mt-16">
                     <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                         Explore More on GitHub <i class="fab fa-github ml-2"></i>
@@ -301,16 +298,16 @@
                         <div>
                             <h3 class="text-lg font-semibold text-neutral-dark mb-1">A state-of-the-art review on robotics in waste sorting: scope and challenges</h3>
                             <p class="text-neutral-medium text-sm italic mb-2">International Journal on Interactive Design and Manufacturing (IJIDeM), vol. 17, pp. 2789–2806 (2023)</p>
-                            </div>
+                        </div>
                     </div>
                      <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 animate-on-scroll transition-shadow duration-300 hover:shadow-lg" data-animation="fade-in-up" style="animation-delay: 0.1s;">
                          <i class="fas fa-car-alt text-3xl text-primary mt-1 flex-shrink-0"></i>
                          <div>
                             <h3 class="text-lg font-semibold text-neutral-dark mb-1">Overview of Autonomous Vehicles and Its Challenges</h3>
                             <p class="text-neutral-medium text-sm italic mb-2">Techno-Societal 2022. ICATSA 2022. Lecture Notes in Networks and Systems, vol 681. Springer, Cham (2023)</p>
-                             </div>
+                         </div>
                     </div>
-                    </div>
+                </div>
                  <p class="text-center mt-12 text-neutral-medium">
                     For more details, visit my <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-primary font-medium hover:underline">Google Scholar Profile</a>.
                  </p>
