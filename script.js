@@ -1,178 +1,411 @@
-// script.js
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinmay Amrutkar | Engineering Intelligent Machines</title>
+    <meta name="description" content="Chinmay Amrutkar's portfolio: Robotics Engineer specializing in Computer Vision, AI, and building intelligent autonomous systems.">
 
-document.addEventListener('DOMContentLoaded', function() {
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    // --- Initialize AOS (Animate On Scroll) ---
-    // This function finds elements with 'data-aos' attributes and animates them
-    // when they enter the viewport based on the attribute value (e.g., "fade-up").
-    AOS.init({
-        duration: 600,      // Animation duration in milliseconds
-        easing: 'ease-in-out', // Type of easing for the animation
-        once: true,         // Animate elements only once when they scroll into view
-        mirror: false,      // Don't animate elements out when scrolling past them
-        anchorPlacement: 'top-bottom', // Trigger animation when the top of the element hits the bottom of the window
-    });
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
-    // --- Initialize Swiper for Project Carousel ---
-    // This initializes the Swiper library on the element with the class 'swiper-container'.
-    const swiper = new Swiper('.swiper-container', {
-        // Configuration options for the carousel
-        loop: false, // Don't loop back to the beginning after the last slide
-        slidesPerView: 1, // Show 1 slide at a time on mobile by default
-        spaceBetween: 30, // Space between slides in pixels
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        // Responsive breakpoints to change settings based on screen width
-        breakpoints: {
-            // For screens 768px wide or larger (tablets)
-            768: {
-                slidesPerView: 2, // Show 2 slides
-                spaceBetween: 30
-            },
-            // For screens 1024px wide or larger (desktops)
-            1024: {
-                slidesPerView: 3, // Show 3 slides
-                spaceBetween: 40 // Increase space slightly
-            }
-        },
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-        // Enable navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next', // CSS selector for the 'next' button
-            prevEl: '.swiper-button-prev', // CSS selector for the 'previous' button
-        },
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-        // Improve accessibility
-        a11y: {
-            prevSlideMessage: 'Previous project', // ARIA label for previous button
-            nextSlideMessage: 'Next project',     // ARIA label for next button
-        },
-    });
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png">
 
-
-    // --- Mobile Menu Toggle ---
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = menuButton ? menuButton.querySelector('i') : null; // Get the icon inside the button
-
-    // Check if all elements exist before adding listeners
-    if (menuButton && mobileMenu && menuIcon) {
-        // Toggle menu visibility when the button is clicked
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden'); // Add/remove 'hidden' class
-            // Toggle the icon between hamburger (bars) and close (times)
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
-        });
-
-        // Add listeners to each link within the mobile menu
-        const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden'); // Hide the menu when a link is clicked
-                // Reset the icon back to hamburger if it was the close icon
-                if (menuIcon.classList.contains('fa-times')) {
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
-                }
-            });
-        });
-    }
-
-    // --- Smooth Scrolling for Internal Links ---
-    // Select all anchor links pointing to an internal section (#...)
-    const scrollLinks = document.querySelectorAll('a[href*="#"]:not([href="#"])');
-    scrollLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const hash = this.hash; // Get the #section part of the href
-
-            // Make sure it's a valid internal link
-            if (hash.startsWith('#') && hash.length > 1) {
-                 const targetElement = document.querySelector(hash); // Find the target section
-
-                 // If the target section exists on the page
-                 if (targetElement) {
-                    e.preventDefault(); // Stop the default browser jump
-
-                    const header = document.querySelector('header');
-                    // Calculate header height (use a fallback if header not found)
-                    const headerOffset = header ? header.offsetHeight : 70;
-                    // Get position of the target element relative to the viewport
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    // Calculate the final scroll position, adjusting for the sticky header
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    // Perform the smooth scroll
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-
-                    // Close mobile menu if it's open after clicking a link
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                         mobileMenu.classList.add('hidden');
-                         if (menuIcon && menuIcon.classList.contains('fa-times')) {
-                            menuIcon.classList.remove('fa-times');
-                            menuIcon.classList.add('fa-bars');
-                        }
+    <script>
+        // Tailwind Customization
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['monospace']
+                    },
+                    colors: {
+                        'navy': { DEFAULT: '#0a192f', 'light': '#112240', 'lighter': '#233554' },
+                        'cyber-green': { DEFAULT: '#64ffda', 'dark': '#00cc99' },
+                        'tech-grey': { DEFAULT: '#8892b0', 'light': '#ccd6f6', 'lighter': '#a8b2d1', 'dark': '#495670' },
+                        'white': '#ffffff',
+                    },
+                    boxShadow: {
+                        'glow-cyber-green-sm': '0 0 8px rgba(100, 255, 218, 0.4)',
+                        'glow-cyber-green-md': '0 0 15px rgba(100, 255, 218, 0.5)',
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath d='M0 15h30M15 0v30' fill='none' stroke='%23112240' stroke-width='0.5'/%3E%3C/svg%3E\")",
                     }
                 }
             }
-            // Let external links or the resume download link behave normally
-        });
-    });
+        }
+    </script>
+    <style type="text/tailwindcss">
+        /* Base styles */
+        body { @apply font-sans bg-navy text-tech-grey antialiased; }
+        h1, h2, h3, h4, h5, h6 { @apply text-tech-grey-light font-semibold tracking-tight; }
+        .section-padding { @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24; }
 
-    // --- Active Nav Link Highlighting on Scroll ---
-    // Select all main sections with an ID and the desktop navigation links
-    const sections = document.querySelectorAll('main section[id]');
-    const navLinks = document.querySelectorAll('header .hidden.md\\:flex a.nav-link');
-    // Calculate offset needed for highlighting considering header height and a buffer
-    const headerOffsetForNav = (document.querySelector('header')?.offsetHeight || 70) + 100;
+        /* Card base */
+        .card { @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter; }
+        .card-interactive { @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1; }
+        .card-glow-border { @apply hover:shadow-glow-cyber-green-sm; }
 
-    function changeNavOnScroll() {
-        let currentSectionId = '';
-        const scrollPosition = window.pageYOffset; // Current vertical scroll position
+        /* Nav links */
+        .nav-link { @apply text-tech-grey hover:text-cyber-green transition-colors duration-200 pb-1 text-sm font-medium relative after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-0.5 after:bg-cyber-green after:transition-all after:duration-300; }
+        .nav-link:hover::after, .nav-link.active::after { @apply w-full; }
+        .nav-link.active { @apply text-cyber-green; }
 
-        // Iterate through each section to see which one is currently in view
-        sections.forEach(section => {
-            // Check if section exists and has a valid offsetTop
-            if (section && typeof section.offsetTop === 'number') {
-                const sectionTop = section.offsetTop - headerOffsetForNav; // Adjusted top position
-                const sectionHeight = section.offsetHeight;
-                // Check if the current scroll position is within this section's bounds
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                     currentSectionId = section.getAttribute('id'); // Set the active section ID
-                }
-            }
-        });
+        /* Buttons */
+        .btn { @apply px-5 py-2.5 rounded font-medium transition duration-300 ease-in-out inline-block text-center text-sm tracking-wide focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-navy focus:ring-cyber-green; }
+        .btn-primary { @apply bg-cyber-green text-navy font-bold hover:bg-opacity-90 shadow-md hover:shadow-lg hover:shadow-glow-cyber-green-sm transform hover:-translate-y-0.5; }
+        .btn-outline { @apply bg-transparent border border-cyber-green text-cyber-green hover:bg-cyber-green/10 transform hover:-translate-y-0.5; }
 
-         // Handle edge case: If scrolled near the bottom, make the last section active
-         const bottomThreshold = document.body.offsetHeight - window.innerHeight - 50; // 50px buffer
-         if (scrollPosition >= bottomThreshold && sections.length > 0) {
-             currentSectionId = sections[sections.length - 1].getAttribute('id');
-         }
-         // Handle edge case: If scrolled to the very top, no section is active
-         else if (scrollPosition < (sections[0]?.offsetTop - headerOffsetForNav || 0)) {
-             currentSectionId = '';
-         }
+        /* Project image */
+        .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
+        .project-image { @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100; }
 
-        // Update the 'active' class on navigation links
-        navLinks.forEach(link => {
-            link.classList.remove('active'); // Remove active class from all links first
-            // Add active class if the link's href matches the current section ID
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
-                link.classList.add('active');
-            }
-        });
-    }
+        /* Tech Stack */
+        .tech-icon-container {
+             /* FIX: Removed 'group' from @apply */
+             @apply flex flex-col items-center gap-2 text-center;
+        }
+        .tech-icon {
+             /* 'group' class needs to be added to the container div in HTML */
+             @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green;
+        }
+        .tech-label {
+             /* 'group' class needs to be added to the container div in HTML */
+             @apply text-xs text-tech-grey-dark group-hover:text-tech-grey;
+        }
 
-    // --- Footer Year ---
-    // Automatically update the copyright year in the footer
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
+        /* Quote */
+        .quote-section { @apply border-l-4 border-cyber-green pl-6 italic text-tech-grey-lighter; }
 
-    // --- Initial Calls & Event Listeners ---
-    // Add scroll listener to update nav highlighting as user scrolls
-    window.addEventListener('scroll', changeNavOnScroll);
-    // Run the nav highlighting function once on page load to set the initial state
-    changeNavOnScroll();
+        /* Swiper Carousel Styles */
+        .swiper-container { @apply w-full overflow-hidden relative; }
+        .swiper-slide { @apply !h-auto; }
+        .swiper-button-next, .swiper-button-prev {
+            @apply text-cyber-green bg-navy-light rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-navy-lighter hover:scale-110;
+            top: 50%; transform: translateY(-50%);
+        }
+        .swiper-button-next::after, .swiper-button-prev::after { @apply text-sm font-extrabold; }
+        .swiper-button-prev { @apply -left-2 md:-left-4; }
+        .swiper-button-next { @apply -right-2 md:-right-4; }
 
-}); // End DOMContentLoaded wrapper
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a192f; }
+        ::-webkit-scrollbar-thumb { background: #233554; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #495670; }
+    </style>
+</head>
+<body class="dark">
+
+    <header class="bg-navy/85 backdrop-blur-lg shadow-md sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+             <a href="#" class="text-2xl font-bold text-cyber-green hover:opacity-80 transition-opacity font-mono" aria-label="Homepage">
+                CA
+            </a>
+            <div class="hidden md:flex items-center space-x-5 lg:space-x-7">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#resume" class="nav-link">Resume</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                 <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="text-tech-grey hover:text-cyber-green transition-colors duration-200 text-xl ml-3" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-tech-grey-light focus:outline-none text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-light absolute w-full shadow-lg border-t border-navy-lighter z-40">
+            <a href="#about" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">About</a>
+            <a href="#projects" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Projects</a>
+            <a href="#skills" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Skills</a>
+            <a href="#publications" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Publications</a>
+            <a href="#resume" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Resume</a>
+            <a href="#contact" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Contact</a>
+            <a href="assets/pdf/Chinmay_Amrutkar_Resume.pdf" target="_blank" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green border-t border-navy-lighter">
+                <i class="fas fa-download mr-2"></i>Download Resume
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero" class="section-padding min-h-[calc(100vh-70px)] flex items-center relative overflow-hidden bg-navy bg-grid-pattern">
+             <div class="container mx-auto relative z-10">
+                 <div class="flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-10 md:gap-16">
+                    <div class="md:w-auto text-center md:text-left"> <h1 class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-x-4 text-3xl sm:text-4xl font-semibold text-tech-grey-light mb-3" data-aos="fade-up" data-aos-delay="100">
+                           <span> Hi, I’m Chinmay Amrutkar</span>
+                        </h1>
+                        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-tech-grey-light mb-5 !leading-tight" data-aos="fade-up" data-aos-delay="200">
+                            Engineering Intelligent Machines
+                        </h2>
+                        <h3 class="text-lg sm:text-xl font-medium text-cyber-green mb-8 tracking-wide" data-aos="fade-up" data-aos-delay="300">
+                            Robotics • Computer Vision • AI
+                        </h3>
+                        <p class="text-base md:text-lg text-tech-grey-lighter max-w-xl mb-10" data-aos="fade-up" data-aos-delay="400">
+                            A Robotics Engineer crafting perception systems for autonomous agents. Currently pursuing an M.S. at ASU, passionate about bridging AI theory with real-world robotic applications.
+                        </p>
+                        <div data-aos="fade-up" data-aos-delay="500">
+                            <a href="#projects" class="btn btn-primary mr-4">Explore Projects</a>
+                            <a href="assets/pdf/Chinmay_Amrutkar_Resume.pdf" target="_blank" class="btn btn-outline">View Resume</a>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 order-first md:order-last" data-aos="fade-left" data-aos-delay="300"> <img src="assets/images/profile-photo.jpg" alt="Chinmay Amrutkar Profile Picture" class="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-full border-4 border-navy-lighter shadow-xl object-cover mx-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding bg-navy-light">
+            <div class="container mx-auto max-w-4xl" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-8 text-center">About Me</h2>
+                <div class="text-lg text-tech-grey-lighter space-y-5 leading-relaxed mx-auto max-w-3xl mb-12">
+                     <p>
+                        Driven by a fascination for how machines perceive and interact with the physical world, I specialize in the intersection of <strong class="text-cyber-green/90 font-medium">Computer Vision</strong>, <strong class="text-cyber-green/90 font-medium">Artificial Intelligence</strong>, and <strong class="text-cyber-green/90 font-medium">Robotics</strong>.
+                    </p>
+                    <p>
+                        My academic foundation includes a Gold Medalist B.Tech in Robotics & Automation from MIT World Peace University and ongoing M.S. studies in Robotics & Autonomous Systems (AI) at <strong class="text-tech-grey-light">Arizona State University</strong>.
+                    </p>
+                     <p>
+                        From developing perception pipelines for Unmanned Surface Vehicles using YOLOv8 to creating high-fidelity <strong class="text-cyber-green/90 font-medium">digital twins</strong> for robotic arms like the MyCobot, I enjoy building robust, efficient systems that solve tangible problems. I thrive on collaboration and the challenge of translating complex algorithms into practical, intelligent automation.
+                    </p>
+                </div>
+                 <blockquote class="quote-section max-w-2xl mx-auto text-center text-lg" data-aos="fade-up" data-aos-delay="100">
+                    "My goal is to engineer systems that not only perceive the world intelligently but also act upon it effectively and safely."
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding bg-navy">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16" data-aos="fade-up">Skills & Technologies</h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-6 gap-y-10 md:gap-x-10 md:gap-y-12 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tech-icon-container group">
+                        <i class="devicon-python-plain tech-icon" title="Python"></i>
+                        <span class="tech-label">Python</span>
+                    </div>
+                    <div class="tech-icon-container group">
+                        <i class="devicon-cplusplus-plain tech-icon" title="C++"></i>
+                         <span class="tech-label">C++</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-opencv-plain tech-icon" title="OpenCV"></i>
+                         <span class="tech-label">OpenCV</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-pytorch-original tech-icon" title="PyTorch"></i>
+                         <span class="tech-label">PyTorch</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-tensorflow-original tech-icon" title="TensorFlow"></i>
+                         <span class="tech-label">TensorFlow</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-ros-plain tech-icon" title="ROS"></i>
+                         <span class="tech-label">ROS</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-matlab-plain tech-icon" title="MATLAB"></i>
+                         <span class="tech-label">MATLAB</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <span class="tech-icon" title="Simulink"><i class="fas fa-project-diagram"></i></span>
+                         <span class="tech-label">Simulink</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-docker-plain tech-icon" title="Docker"></i>
+                         <span class="tech-label">Docker</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-git-plain tech-icon" title="Git"></i>
+                         <span class="tech-label">Git</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                        <i class="devicon-linux-plain tech-icon" title="Linux"></i>
+                         <span class="tech-label">Linux</span>
+                    </div>
+                     <div class="tech-icon-container group">
+                         <i class="fas fa-cogs tech-icon" title="Control Systems"></i>
+                         <span class="tech-label">Control Sys.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding bg-navy-light">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16 text-center" data-aos="fade-up">Featured Projects</h2>
+
+                <div class="swiper-container relative px-8 md:px-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                             <a href="[LINK_TO_NERF_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group">
+                                <div class="card card-interactive card-glow-border h-full flex flex-col">
+                                    <div class="project-image-wrapper">
+                                        <img src="assets/images/project-nerf-preview.gif" alt="NeRF 3D Reconstruction Preview" class="project-image">
+                                    </div>
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">3D Reconstruction using NeRF</h3>
+                                        <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
+                                            Captured real-world dataset and trained NeRF models (Instant-NGP, Nerfacto, TensoRF) for 3D reconstruction of the ARISPE Meteorite.
+                                        </p>
+                                        <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
+                                            <i class="devicon-python-plain" title="Python"></i>
+                                            <i class="devicon-pytorch-original" title="PyTorch"></i>
+                                            <i class="fas fa-cubes" title="3D Modeling"></i>
+                                            <span class="font-mono ml-auto">NeRF</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="[LINK_TO_PITCHPERFECT_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group">
+                                <div class="card card-interactive card-glow-border h-full flex flex-col">
+                                    <div class="project-image-wrapper">
+                                        <img src="assets/images/project-pitchperfect-preview.gif" alt="Pitch Perfect AI Interview Platform Preview" class="project-image">
+                                    </div>
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">InnovationHacks 2025: Pitch Perfect</h3>
+                                        <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
+                                            AI-powered video interview platform analyzing sentiment and relevance to improve job matching for seekers and recruiters.
+                                        </p>
+                                        <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
+                                            <i class="devicon-python-plain" title="Python"></i>
+                                            <i class="fas fa-brain" title="AI/ML"></i>
+                                            <i class="fas fa-video" title="Video Processing"></i>
+                                            <i class="fas fa-cloud" title="Web Platform"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="[LINK_TO_DRONE_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group">
+                                <div class="card card-interactive card-glow-border h-full flex flex-col">
+                                    <div class="project-image-wrapper">
+                                        <img src="assets/images/project-drone-preview.gif" alt="Autonomous Drone Project Preview" class="project-image">
+                                    </div>
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Autonomous Drone Line Following & Landing</h3>
+                                        <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
+                                            Custom line detection and landing logic using Simulink Stateflow for a Parrot Mambo drone, utilizing lightweight onboard image processing.
+                                        </p>
+                                        <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
+                                            <i class="devicon-matlab-plain" title="MATLAB"></i>
+                                            <i class="fas fa-project-diagram" title="Simulink"></i>
+                                            <i class="fas fa-plane-departure" title="UAV"></i>
+                                            <i class="fas fa-microchip" title="Embedded Systems"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="section-padding bg-navy">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16 text-center" data-aos="fade-up">Publications & Awards</h2>
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div class="bg-navy-light p-5 rounded-md border border-navy-lighter flex items-center space-x-5 transition-colors duration-300 hover:border-cyber-green/50" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-award text-2xl text-cyber-green flex-shrink-0 w-6 text-center"></i>
+                        <div>
+                            <h3 class="text-lg font-medium text-tech-grey-light">Featured Project on Hackster.io</h3>
+                            <p class="text-tech-grey text-sm">[Specific Project Name] showcased.</p>
+                        </div>
+                    </div>
+                    <div class="bg-navy-light p-5 rounded-md border border-navy-lighter flex items-center space-x-5 transition-colors duration-300 hover:border-cyber-green/50" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-file-alt text-2xl text-cyber-green flex-shrink-0 w-6 text-center"></i>
+                        <div>
+                            <h3 class="text-lg font-medium text-tech-grey-light">Robotics in Waste Sorting Review</h3>
+                            <p class="text-tech-grey text-sm italic">Intl. Journal on Interactive Design & Manufacturing (IJIDeM), 2023</p>
+                        </div>
+                    </div>
+                    <div class="bg-navy-light p-5 rounded-md border border-navy-lighter flex items-center space-x-5 transition-colors duration-300 hover:border-cyber-green/50" data-aos="fade-up" data-aos-delay="300">
+                         <i class="fas fa-medal text-2xl text-cyber-green flex-shrink-0 w-6 text-center"></i>
+                         <div>
+                            <h3 class="text-lg font-medium text-tech-grey-light">Academic Honors</h3>
+                            <p class="text-tech-grey text-sm">Gold Medalist (B.Tech), Merit Scholarships, ASU NAMU Scholar & Engineering Fellow.</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="section-padding bg-navy-light">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-8" data-aos="fade-up">Resume</h2>
+                <p class="text-lg text-tech-grey max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
+                    Download my resume for a comprehensive overview of my qualifications, experience, and skills.
+                </p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                     <a href="assets/pdf/Chinmay_Amrutkar_Resume.pdf" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download mr-2"></i> Download Resume (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding bg-navy">
+             <div class="container mx-auto text-center max-w-xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-6" data-aos="fade-up">Let's Collaborate</h2>
+                <p class="text-lg text-tech-grey mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                     I love collaborating on cutting-edge robotics and computer vision systems. Whether you're working on autonomous systems, digital twins, or AI-driven robotics, I’d love to connect. Let’s build something intelligent together.
+                </p>
+                 <div class="flex justify-center space-x-6 text-3xl mb-10" data-aos="fade-up" data-aos-delay="200">
+                     <a href="mailto:chinmay.amrutkar@asu.edu" class="text-tech-grey hover:text-cyber-green transition-colors duration-300 transform hover:scale-110 hover:shadow-glow-cyber-green-sm rounded-full" aria-label="Email"><i class="fas fa-envelope p-2"></i></a>
+                     <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="text-tech-grey hover:text-cyber-green transition-colors duration-300 transform hover:scale-110 hover:shadow-glow-cyber-green-sm rounded-full" aria-label="GitHub"><i class="fab fa-github p-2"></i></a>
+                     <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="text-tech-grey hover:text-cyber-green transition-colors duration-300 transform hover:scale-110 hover:shadow-glow-cyber-green-sm rounded-full" aria-label="LinkedIn"><i class="fab fa-linkedin p-2"></i></a>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                     <a href="mailto:chinmay.amrutkar@asu.edu" class="btn btn-primary text-base md:text-lg !px-8 !py-3.5">
+                        Say Hello <i class="fas fa-paper-plane ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-navy py-10 border-t border-navy-lighter/50">
+        <div class="container mx-auto text-center text-sm text-tech-grey-dark">
+             <div class="flex justify-center space-x-6 mb-5 text-xl">
+                    <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200 transform hover:-translate-y-0.5" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200 transform hover:-translate-y-0.5" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200 transform hover:-translate-y-0.5" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                     <a href="mailto:chinmay.amrutkar@asu.edu" class="hover:text-cyber-green transition-colors duration-200 transform hover:-translate-y-0.5" aria-label="Email"><i class="fas fa-envelope"></i></a>
+             </div>
+            <p>&copy; <span id="current-year"></span> Chinmay Amrutkar.</p>
+             <p class="mt-1.5 text-xs">Made with <i class="fas fa-laptop-code text-cyber-green/70"></i> and <i class="fas fa-mug-hot text-cyber-green/70"></i> by Chinmay.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
