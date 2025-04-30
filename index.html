@@ -74,7 +74,8 @@
         }
         /* Card styling */
         .card {
-            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-1; /* Enhanced card style */
+            /* CHANGE: Added group class for hover effects on children */
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-1 group;
         }
         /* Navigation link styling */
         .nav-link {
@@ -88,18 +89,26 @@
             @apply px-6 py-3 rounded-md font-semibold transition duration-300 ease-in-out inline-block text-center text-sm;
         }
         .btn-primary {
-            @apply bg-primary text-white hover:bg-primary-dark shadow-md hover:shadow-lg;
+            @apply bg-primary text-white hover:bg-primary-dark shadow-md hover:shadow-lg transform hover:-translate-y-0.5; /* Added subtle lift on hover */
         }
         .btn-secondary {
-            @apply bg-secondary text-white hover:bg-secondary-dark shadow-md hover:shadow-lg;
+            @apply bg-secondary text-white hover:bg-secondary-dark shadow-md hover:shadow-lg transform hover:-translate-y-0.5; /* Added subtle lift on hover */
         }
         .btn-outline {
-             @apply bg-transparent border-2 border-neutral-dark text-neutral-dark hover:bg-neutral-dark hover:text-white;
+             @apply bg-transparent border-2 border-neutral-dark text-neutral-dark hover:bg-neutral-dark hover:text-white transform hover:-translate-y-0.5; /* Added subtle lift on hover */
         }
         /* Add styles for elements that will be animated on scroll */
         .animate-on-scroll {
             opacity: 0; /* Start hidden */
         }
+        /* CHANGE: Style for project image hover effect */
+        .project-image {
+            @apply w-full h-52 object-cover transition-transform duration-300 ease-out;
+        }
+        .card:hover .project-image {
+             @apply scale-105; /* Zoom in image on card hover */
+        }
+
     </style>
 </head>
 <body>
@@ -153,10 +162,10 @@
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
                  <div class="mt-12 flex justify-center space-x-5 text-2xl text-neutral-medium animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.5s;">
-                    <a href="mailto:chinmay.amrutkar@asu.edu" class="hover:text-primary transition duration-300" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="mailto:chinmay.amrutkar@asu.edu" class="hover:text-primary transition duration-300 transform hover:scale-110" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300 transform hover:scale-110" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300 transform hover:scale-110" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300 transform hover:scale-110" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
                 </div>
             </div>
         </section>
@@ -178,7 +187,7 @@
                     </div>
                 </div>
                 <div class="md:col-span-2 animate-on-scroll" data-animation="fade-in-up">
-                    <div class="bg-primary-light rounded-lg p-8 text-center shadow-md">
+                    <div class="bg-primary-light rounded-lg p-8 text-center shadow-md border border-primary/20">
                          <i class="fas fa-brain text-6xl text-primary mb-4"></i>
                          <h3 class="text-xl font-semibold text-neutral-dark mb-2">Core Focus</h3>
                          <p class="text-neutral-medium">AI-driven Perception & Automation</p>
@@ -195,22 +204,22 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-neutral-dark mb-16">Technical Toolkit</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up">
-                        <i class="fas fa-code text-4xl text-primary mb-4"></i>
+                        <i class="fas fa-terminal text-4xl text-primary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">Languages</h3>
                         <p class="text-neutral-medium">Python, C++, C, Java</p>
                     </div>
                     <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
-                        <i class="fas fa-microchip text-4xl text-secondary mb-4"></i>
+                         <i class="fas fa-eye text-4xl text-secondary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">AI & CV</h3>
                         <p class="text-neutral-medium">PyTorch, TensorFlow, OpenCV, PCL, Object Detection, SLAM</p>
                     </div>
                     <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.2s;">
-                        <i class="fas fa-robot text-4xl text-primary mb-4"></i>
+                         <i class="fas fa-robot text-4xl text-primary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">Robotics</h3>
                         <p class="text-neutral-medium">ROS, ROS2, MATLAB, Motion Planning, Kinematics, Control</p>
                     </div>
                     <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.3s;">
-                        <i class="fas fa-laptop-code text-4xl text-secondary mb-4"></i>
+                         <i class="fas fa-laptop-code text-4xl text-secondary mb-4"></i>
                         <h3 class="text-xl font-semibold text-neutral-dark mb-3">Tools & Sim</h3>
                         <p class="text-neutral-medium">Git, Linux, Docker, Gazebo, VTD, Adams, SolidWorks</p>
                     </div>
@@ -224,7 +233,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
                     <div class="card animate-on-scroll" data-animation="fade-in-up">
-                        <img src="https://placehold.co/600x400/1e3a8a/e0f2fe?text=LiDAR+%26+Vision" alt="3D Object Detection Project" class="w-full h-52 object-cover">
+                        <div class="overflow-hidden"> <img src="https://placehold.co/600x400/1e3a8a/e0f2fe?text=LiDAR+%26+Vision" alt="3D Object Detection Project" class="project-image">
+                        </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-neutral-dark mb-3">Real-Time 3D Object Detection & Fusion</h3>
                             <p class="text-neutral-medium mb-4 text-sm">
@@ -239,7 +249,9 @@
                     </div>
 
                     <div class="card animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
-                        <img src="https://placehold.co/600x400/047857/a7f3d0?text=Robotic+Arm+Nav" alt="MyCobot Maze Project" class="w-full h-52 object-cover">
+                         <div class="overflow-hidden">
+                            <img src="https://placehold.co/600x400/047857/a7f3d0?text=Robotic+Arm+Nav" alt="MyCobot Maze Project" class="project-image">
+                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-neutral-dark mb-3">MyCobot Maze Navigation</h3>
                             <p class="text-neutral-medium mb-4 text-sm">
@@ -255,7 +267,9 @@
                     </div>
 
                     <div class="card animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.2s;">
-                         <img src="https://placehold.co/600x400/d97706/fef3c7?text=Waste+Sorting+AI" alt="Waste Sorting Arm Project" class="w-full h-52 object-cover">
+                         <div class="overflow-hidden">
+                            <img src="https://placehold.co/600x400/d97706/fef3c7?text=Waste+Sorting+AI" alt="Waste Sorting Arm Project" class="project-image">
+                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-neutral-dark mb-3">AI-Powered Waste Sorting Arm</h3>
                             <p class="text-neutral-medium mb-4 text-sm">
@@ -282,15 +296,15 @@
             <div class="container mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-neutral-dark mb-16">Publications & Research</h2>
                 <div class="max-w-4xl mx-auto space-y-8">
-                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 animate-on-scroll" data-animation="fade-in-up">
-                        <i class="fas fa-recycle text-3xl text-secondary mt-1"></i>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 animate-on-scroll transition-shadow duration-300 hover:shadow-lg" data-animation="fade-in-up">
+                        <i class="fas fa-recycle text-3xl text-secondary mt-1 flex-shrink-0"></i>
                         <div>
                             <h3 class="text-lg font-semibold text-neutral-dark mb-1">A state-of-the-art review on robotics in waste sorting: scope and challenges</h3>
                             <p class="text-neutral-medium text-sm italic mb-2">International Journal on Interactive Design and Manufacturing (IJIDeM), vol. 17, pp. 2789–2806 (2023)</p>
                             </div>
                     </div>
-                     <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
-                         <i class="fas fa-car-alt text-3xl text-primary mt-1"></i>
+                     <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 animate-on-scroll transition-shadow duration-300 hover:shadow-lg" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                         <i class="fas fa-car-alt text-3xl text-primary mt-1 flex-shrink-0"></i>
                          <div>
                             <h3 class="text-lg font-semibold text-neutral-dark mb-1">Overview of Autonomous Vehicles and Its Challenges</h3>
                             <p class="text-neutral-medium text-sm italic mb-2">Techno-Societal 2022. ICATSA 2022. Lecture Notes in Networks and Systems, vol 681. Springer, Cham (2023)</p>
@@ -317,13 +331,13 @@
 
                 <p class="text-neutral-medium mb-4">Find me on:</p>
                 <div class="flex justify-center space-x-6 text-3xl">
-                    <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300" aria-label="GitHub">
+                     <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300 transform hover:scale-110" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300 transform hover:scale-110" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300" aria-label="Google Scholar">
+                    <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300 transform hover:scale-110" aria-label="Google Scholar">
                         <i class="fas fa-graduation-cap"></i>
                     </a>
                 </div>
