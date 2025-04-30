@@ -66,7 +66,8 @@
                         'parallax-texture': "url('/assets/images/tech-texture.png')",
                     },
                     boxShadow: {
-                        'glow-cyber-green': '0 0 15px rgba(100, 255, 218, 0.5)',
+                        // FIX: Defined the glow with desired opacity directly here
+                        'glow-cyber-green': '0 0 15px 5px rgba(100, 255, 218, 0.4)', // Adjusted spread and opacity
                     }
                 }
             }
@@ -86,7 +87,6 @@
         }
         /* Card styling */
         .card {
-            /* NOTE: 'group' class is applied directly in HTML where needed */
             @apply bg-navy-light rounded-md shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter hover:border-cyber-green/30 hover:shadow-2xl hover:-translate-y-1.5;
         }
         /* Navigation link styling */
@@ -104,7 +104,8 @@
             @apply px-5 py-2.5 rounded font-medium transition duration-300 ease-in-out inline-block text-center text-sm tracking-wide focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-navy focus:ring-cyber-green;
         }
         .btn-primary {
-            @apply bg-cyber-green text-navy font-bold hover:bg-opacity-90 shadow-md hover:shadow-lg hover:shadow-glow-cyber-green/50 transform hover:-translate-y-0.5;
+             /* FIX: Removed the /50 opacity modifier from hover:shadow-glow-cyber-green */
+            @apply bg-cyber-green text-navy font-bold hover:bg-opacity-90 shadow-md hover:shadow-lg hover:shadow-glow-cyber-green transform hover:-translate-y-0.5;
         }
         .btn-outline {
              @apply bg-transparent border border-cyber-green text-cyber-green hover:bg-cyber-green/10 transform hover:-translate-y-0.5;
@@ -247,7 +248,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card animate-on-scroll fade-in-up-start group" data-delay="100">
+                     <div class="card animate-on-scroll fade-in-up-start group" data-delay="100">
                          <div class="project-image-wrapper">
                             <img src="https://placehold.co/600x400/112240/64ffda?text=Digital+Twin" alt="MyCobot Digital Twin Project" class="project-image">
                          </div>
@@ -267,7 +268,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card animate-on-scroll fade-in-up-start group" data-delay="200">
+                     <div class="card animate-on-scroll fade-in-up-start group" data-delay="200">
                          <div class="project-image-wrapper">
                             <img src="https://placehold.co/600x400/233554/64ffda?text=Drone+Control" alt="Autonomous Drone Project" class="project-image">
                          </div>
