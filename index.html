@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinmay Amrutkar | Robotics & Computer Vision Engineer</title>
+    <meta name="description" content="Portfolio of Chinmay Amrutkar, Robotics Engineer specializing in Computer Vision, AI, and Autonomous Systems based in Tempe, AZ.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        // Tailwind Customization
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Use Inter as the primary font
+                    },
+                    colors: {
+                        // Refined Tech Palette
+                        'primary': { // Shades of Blue
+                          DEFAULT: '#2563eb', // Brighter blue for highlights/buttons
+                          'dark': '#1e40af', // Darker blue for accents
+                          'light': '#dbeafe' // Light blue for backgrounds/subtle elements
+                        },
+                        'secondary': { // Shades of Teal/Emerald
+                          DEFAULT: '#059669', // Main accent
+                          'dark': '#047857',
+                          'light': '#a7f3d0'
+                        },
+                        'neutral': { // Grays
+                          'dark': '#1f2937', // Dark background / headings
+                          'medium': '#6b7280', // Body text
+                          'light': '#f3f4f6', // Light backgrounds
+                          'extralight': '#f9fafb' // Off-white backgrounds
+                        },
+                        'white': '#ffffff',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards', // Example animation
+                        'slide-in-left': 'slideInLeft 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        /* Custom base styles */
+        body {
+            @apply font-sans bg-neutral-extralight text-neutral-medium antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply text-neutral-dark font-semibold;
+        }
+        /* Section styling */
+        .section-padding {
+            @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24; /* Increased padding */
+        }
+        /* Card styling */
+        .card {
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-2xl hover:-translate-y-1; /* Enhanced card style */
+        }
+        /* Navigation link styling */
+        .nav-link {
+             @apply text-neutral-medium hover:text-primary-dark transition-colors duration-200 pb-1 text-sm font-medium;
+        }
+        .nav-link.active {
+             @apply text-primary font-semibold border-b-2 border-primary;
+        }
+        /* Button styling */
+        .btn {
+            @apply px-6 py-3 rounded-md font-semibold transition duration-300 ease-in-out inline-block text-center text-sm;
+        }
+        .btn-primary {
+            @apply bg-primary text-white hover:bg-primary-dark shadow-md hover:shadow-lg;
+        }
+        .btn-secondary {
+            @apply bg-secondary text-white hover:bg-secondary-dark shadow-md hover:shadow-lg;
+        }
+        .btn-outline {
+             @apply bg-transparent border-2 border-neutral-dark text-neutral-dark hover:bg-neutral-dark hover:text-white;
+        }
+        /* Add styles for elements that will be animated on scroll */
+        .animate-on-scroll {
+            opacity: 0; /* Start hidden */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-primary-dark hover:opacity-80 transition-opacity">
+                Chinmay Amrutkar
+            </a>
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="assets/pdf/Chinmay_Amrutkar_Resume.pdf" target="_blank" class="btn btn-primary text-xs !py-2 !px-4 ml-4">
+                    <i class="fas fa-download mr-1"></i> Resume
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-neutral-dark focus:outline-none text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 absolute w-full shadow-lg border-t border-neutral-light">
+            <a href="#about" class="block px-6 py-3 text-neutral-medium hover:bg-neutral-light hover:text-primary mobile-nav-link">About</a>
+            <a href="#skills" class="block px-6 py-3 text-neutral-medium hover:bg-neutral-light hover:text-primary mobile-nav-link">Skills</a>
+            <a href="#projects" class="block px-6 py-3 text-neutral-medium hover:bg-neutral-light hover:text-primary mobile-nav-link">Projects</a>
+            <a href="#publications" class="block px-6 py-3 text-neutral-medium hover:bg-neutral-light hover:text-primary mobile-nav-link">Publications</a>
+            <a href="#contact" class="block px-6 py-3 text-neutral-medium hover:bg-neutral-light hover:text-primary mobile-nav-link">Contact</a>
+            <a href="assets/pdf/Chinmay_Amrutkar_Resume.pdf" target="_blank" class="block px-6 py-3 text-neutral-medium hover:bg-neutral-light hover:text-primary">
+                <i class="fas fa-download mr-2"></i>Resume
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero" class="section-padding bg-gradient-to-br from-primary-light via-neutral-extralight to-secondary-light relative overflow-hidden">
+            <div class="container mx-auto text-center relative z-10">
+                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-dark mb-4 animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                    Chinmay Amrutkar
+                </h1>
+                <p class="text-xl md:text-2xl text-primary-dark font-medium mb-6 animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                    Robotics & Computer Vision Engineer
+                </p>
+                <p class="text-lg text-neutral-medium max-w-3xl mx-auto mb-10 animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.3s;">
+                    Innovating at the intersection of AI, perception, and automation. Currently pursuing an M.S. at Arizona State University and passionate about solving complex real-world challenges with intelligent systems.
+                </p>
+                <div class="space-x-4 animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.4s;">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+                 <div class="mt-12 flex justify-center space-x-5 text-2xl text-neutral-medium animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.5s;">
+                    <a href="mailto:chinmay.amrutkar@asu.edu" class="hover:text-primary transition duration-300" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-300" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding bg-white">
+            <div class="container mx-auto grid md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-3 animate-on-scroll" data-animation="slide-in-left">
+                    <h2 class="text-3xl md:text-4xl font-bold text-neutral-dark mb-6">About Me</h2>
+                    <div class="text-lg text-neutral-medium space-y-4">
+                        <p>
+                            I'm a dedicated Robotics Engineer specializing in Computer Vision, AI, and autonomous systems. My passion lies in developing cutting-edge algorithms to tackle complex real-world challenges, driving innovation in robotics technology for the betterment of society.
+                        </p>
+                        <p>
+                            Currently pursuing my Master's in Robotics and Autonomous Systems at <strong class="font-semibold text-neutral-dark">Arizona State University</strong> (Expected Graduation: May 2026 - *Please update!*), I previously graduated as a Gold Medalist with a B.Tech in Robotics and Automation from MIT World Peace University.
+                        </p>
+                         <p>
+                            I believe in inventing and simplifying, thriving in collaborative environments where I can partner with teams to transform obstacles into impactful solutions. My experience spans research, development, and practical application in diverse areas like autonomous navigation, robotic manipulation, and perception systems.
+                        </p>
+                    </div>
+                </div>
+                <div class="md:col-span-2 animate-on-scroll" data-animation="fade-in-up">
+                    <div class="bg-primary-light rounded-lg p-8 text-center shadow-md">
+                         <i class="fas fa-brain text-6xl text-primary mb-4"></i>
+                         <h3 class="text-xl font-semibold text-neutral-dark mb-2">Core Focus</h3>
+                         <p class="text-neutral-medium">AI-driven Perception & Automation</p>
+                         <i class="fas fa-cogs text-6xl text-secondary mt-6 mb-4"></i>
+                         <h3 class="text-xl font-semibold text-neutral-dark mb-2">Methodology</h3>
+                         <p class="text-neutral-medium">Invent, Simplify, Collaborate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding bg-neutral-light">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-neutral-dark mb-16">Technical Toolkit</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up">
+                        <i class="fas fa-code text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-neutral-dark mb-3">Languages</h3>
+                        <p class="text-neutral-medium">Python, C++, C, Java</p>
+                    </div>
+                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                        <i class="fas fa-microchip text-4xl text-secondary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-neutral-dark mb-3">AI & CV</h3>
+                        <p class="text-neutral-medium">PyTorch, TensorFlow, OpenCV, PCL, Object Detection, SLAM</p>
+                    </div>
+                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                        <i class="fas fa-robot text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-neutral-dark mb-3">Robotics</h3>
+                        <p class="text-neutral-medium">ROS, ROS2, MATLAB, Motion Planning, Kinematics, Control</p>
+                    </div>
+                    <div class="card p-6 text-center animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.3s;">
+                        <i class="fas fa-laptop-code text-4xl text-secondary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-neutral-dark mb-3">Tools & Sim</h3>
+                        <p class="text-neutral-medium">Git, Linux, Docker, Gazebo, VTD, Adams, SolidWorks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding bg-white">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-neutral-dark mb-16">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                    <div class="card animate-on-scroll" data-animation="fade-in-up">
+                        <img src="https://placehold.co/600x400/1e3a8a/e0f2fe?text=LiDAR+%26+Vision" alt="3D Object Detection Project" class="w-full h-52 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-neutral-dark mb-3">Real-Time 3D Object Detection & Fusion</h3>
+                            <p class="text-neutral-medium mb-4 text-sm">
+                                Ongoing research exploring LiDAR/RGB fusion via deep learning for autonomous driving perception, focusing on real-time edge deployment challenges.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="inline-block bg-primary-light text-primary-dark text-xs font-medium px-3 py-1 rounded-full">Deep Learning</span>
+                                <span class="inline-block bg-secondary-light text-secondary-dark text-xs font-medium px-3 py-1 rounded-full">Sensor Fusion</span>
+                                <span class="inline-block bg-neutral-light text-neutral-medium text-xs font-medium px-3 py-1 rounded-full">LiDAR</span>
+                            </div>
+                             </div>
+                    </div>
+
+                    <div class="card animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                        <img src="https://placehold.co/600x400/047857/a7f3d0?text=Robotic+Arm+Nav" alt="MyCobot Maze Project" class="w-full h-52 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-neutral-dark mb-3">MyCobot Maze Navigation</h3>
+                            <p class="text-neutral-medium mb-4 text-sm">
+                                Developing an autonomous maze-solving system integrating computer vision (OpenCV) and inverse kinematics (MATLAB) for a MyCobot Pro 600.
+                            </p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="inline-block bg-neutral-light text-neutral-medium text-xs font-medium px-3 py-1 rounded-full">Computer Vision</span>
+                                <span class="inline-block bg-orange-100 text-orange-800 text-xs font-medium px-3 py-1 rounded-full">Robotics</span>
+                                <span class="inline-block bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">MATLAB</span>
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">Kinematics</span>
+                            </div>
+                            </div>
+                    </div>
+
+                    <div class="card animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                         <img src="https://placehold.co/600x400/d97706/fef3c7?text=Waste+Sorting+AI" alt="Waste Sorting Arm Project" class="w-full h-52 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-neutral-dark mb-3">AI-Powered Waste Sorting Arm</h3>
+                            <p class="text-neutral-medium mb-4 text-sm">
+                                Designed and built a 4-DOF arm (Arduino controlled) coupled with a YOLOv7 model trained on 2k+ images for automated recyclable sorting.
+                            </p>
+                             <div class="flex flex-wrap gap-2">
+                                 <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-3 py-1 rounded-full">YOLOv7</span>
+                                 <span class="inline-block bg-red-100 text-red-800 text-xs font-medium px-3 py-1 rounded-full">Arduino</span>
+                                 <span class="inline-block bg-gray-100 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">Prototyping</span>
+                                 <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Sustainability</span>
+                             </div>
+                            </div>
+                    </div>
+                    </div>
+                 <p class="text-center mt-16">
+                    <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        Explore More on GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                 </p>
+            </div>
+        </section>
+
+         <section id="publications" class="section-padding bg-neutral-light">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-neutral-dark mb-16">Publications & Research</h2>
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 animate-on-scroll" data-animation="fade-in-up">
+                        <i class="fas fa-recycle text-3xl text-secondary mt-1"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-neutral-dark mb-1">A state-of-the-art review on robotics in waste sorting: scope and challenges</h3>
+                            <p class="text-neutral-medium text-sm italic mb-2">International Journal on Interactive Design and Manufacturing (IJIDeM), vol. 17, pp. 2789–2806 (2023)</p>
+                            </div>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 animate-on-scroll" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                         <i class="fas fa-car-alt text-3xl text-primary mt-1"></i>
+                         <div>
+                            <h3 class="text-lg font-semibold text-neutral-dark mb-1">Overview of Autonomous Vehicles and Its Challenges</h3>
+                            <p class="text-neutral-medium text-sm italic mb-2">Techno-Societal 2022. ICATSA 2022. Lecture Notes in Networks and Systems, vol 681. Springer, Cham (2023)</p>
+                             </div>
+                    </div>
+                    </div>
+                 <p class="text-center mt-12 text-neutral-medium">
+                    For more details, visit my <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-primary font-medium hover:underline">Google Scholar Profile</a>.
+                 </p>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding bg-gradient-to-t from-primary-light to-neutral-extralight">
+             <div class="container mx-auto text-center animate-on-scroll" data-animation="fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-neutral-dark mb-6">Let's Connect!</h2>
+                <p class="text-lg text-neutral-medium mb-10 max-w-2xl mx-auto">
+                    I'm actively seeking challenging roles and collaborations in Robotics and Computer Vision. Whether you have an opportunity, a project idea, or just want to talk tech, feel free to reach out!
+                </p>
+                <div class="mb-10">
+                     <a href="mailto:chinmay.amrutkar@asu.edu" class="btn btn-primary text-lg">
+                        <i class="fas fa-envelope mr-2"></i> Send Email
+                    </a>
+                </div>
+
+                <p class="text-neutral-medium mb-4">Find me on:</p>
+                <div class="flex justify-center space-x-6 text-3xl">
+                    <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="text-neutral-medium hover:text-primary transition duration-300" aria-label="Google Scholar">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-neutral-medium mt-10">Based in Tempe, Arizona</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-neutral-dark text-neutral-light py-8">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; <span id="current-year"></span> Chinmay Amrutkar. All Rights Reserved.</p>
+            <p class="mt-2 text-xs text-neutral-medium">Building the future, one algorithm at a time.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
