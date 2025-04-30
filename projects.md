@@ -20,7 +20,7 @@ Here are some of the key projects I've worked on or am currently involved in, de
 
 ---
 
-<!-- ### Integration of MyCobot Pro 600 and Digital Twin for Maze Navigation
+### Integration of MyCobot Pro 600 and Digital Twin for Maze Navigation
 * Developed an autonomous maze-solving system using computer vision (Python, OpenCV) and inverse kinematics (MATLAB) for precise motion coordination of a MyCobot Pro 600 arm. *(Note: Project details might reflect anticipated work based on listed date)*
 * **Key Technologies:** Computer Vision, Inverse Kinematics, Python, OpenCV, MATLAB, Robotics Simulation (Digital Twin)
 * [**Learn More &raquo;**]({{ site.baseurl }}{% link _projects/mycobot-maze-navigation.md %})
@@ -32,6 +32,6 @@ Here are some of the key projects I've worked on or am currently involved in, de
 * **Key Technologies:** Robotic Arm Design, Arduino, Computer Vision, Deep Learning (YOLOv7), Object Detection, Python
 * [**Learn More &raquo;**]({{ site.baseurl }}{% link _projects/waste-sorting-arm.md %})
 
---- -->
+---
 
 *(More projects can be added here following the same format)*
