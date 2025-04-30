@@ -66,16 +66,19 @@
         }
         /* Section styling */
         .section-padding {
-            @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24; /* Reduced top/bottom padding slightly */
+            @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24;
         }
         /* Card styling */
         .card {
-            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter group; /* Added group */
+            /* ACTUAL FIX: Removed 'group' from this @apply rule */
+            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
         }
         .card-interactive {
-             @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1; /* Slightly less lift */
+             /* The 'group' class should be added directly to the HTML element */
+             @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1;
         }
         .card-glow-border {
+             /* The 'group' class should be added directly to the HTML element */
              @apply hover:shadow-glow-cyber-green-sm;
         }
 
@@ -99,20 +102,20 @@
         /* Scroll animation base */
         .animate-on-scroll {
             opacity: 0;
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Slightly slower transition */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             will-change: transform, opacity;
         }
         .animate-on-scroll.is-visible {
             opacity: 1;
             transform: none !important;
         }
-        .fade-in-up-start { transform: translateY(30px); } /* Increased distance slightly */
-        .slide-in-left-start { transform: translateX(-40px); } /* Increased distance slightly */
+        .fade-in-up-start { transform: translateY(30px); }
+        .slide-in-left-start { transform: translateX(-40px); }
 
         /* Project image styling */
         .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
         .project-image {
-            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100; /* Adjusted opacity */
+            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100;
         }
         /* Tech Stack Icon Styling */
         .tech-icon {
@@ -140,7 +143,8 @@
             <div class="hidden md:flex items-center space-x-5 lg:space-x-7">
                 <a href="#about" class="nav-link">About</a>
                 <a href="#projects" class="nav-link">Projects</a>
-                <a href="#tech-stack" class="nav-link">Tech Stack</a> <a href="#publications" class="nav-link">Publications</a>
+                <a href="#tech-stack" class="nav-link">Tech Stack</a>
+                <a href="#publications" class="nav-link">Publications</a>
                 <a href="#resume" class="nav-link">Resume</a>
                 <a href="#contact" class="nav-link">Contact</a>
                  <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="text-tech-grey hover:text-cyber-green transition-colors duration-200 text-xl ml-3" aria-label="GitHub">
@@ -154,7 +158,8 @@
         <div id="mobile-menu" class="hidden md:hidden bg-navy-light absolute w-full shadow-lg border-t border-navy-lighter z-40">
             <a href="#about" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">About</a>
             <a href="#projects" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Projects</a>
-            <a href="#tech-stack" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Tech Stack</a> <a href="#publications" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Publications</a>
+            <a href="#tech-stack" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Tech Stack</a>
+            <a href="#publications" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Publications</a>
             <a href="#resume" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Resume</a>
             <a href="#contact" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green mobile-nav-link">Contact</a>
             <a href="assets/pdf/Chinmay_Amrutkar_Resume.pdf" target="_blank" class="block px-6 py-3 text-tech-grey hover:bg-navy-lighter hover:text-cyber-green border-t border-navy-lighter">
@@ -187,7 +192,7 @@
                         </div>
                     </div>
                     <div class="flex-shrink-0" data-aos="fade-left" data-aos-delay="300">
-                        <img src="https://placehold.co/240x240/112240/64ffda?text=CA" alt="Chinmay Amrutkar Profile Picture" class="w-40 h-40 sm:w-48 sm:h-48 lg:w-60 lg:h-60 rounded-full border-4 border-navy-lighter shadow-xl object-cover">
+                        <img src=""assets/images/profile-photo.jpg"" alt="Chinmay Amrutkar Profile Picture" class="w-40 h-40 sm:w-48 sm:h-48 lg:w-60 lg:h-60 rounded-full border-4 border-navy-lighter shadow-xl object-cover">
                     </div>
                 </div>
             </div>
@@ -256,7 +261,7 @@
                         </div>
                     </div>
 
-                    <div class="card card-interactive card-glow-border group" data-aos="fade-up" data-aos-delay="200">
+                     <div class="card card-interactive card-glow-border group" data-aos="fade-up" data-aos-delay="200">
                          <div class="project-image-wrapper">
                             <img src="https://placehold.co/600x400/112240/64ffda?text=Digital+Twin+GIF" alt="MyCobot Digital Twin Project Preview" class="project-image">
                          </div>
@@ -276,7 +281,7 @@
                         </div>
                     </div>
 
-                    <div class="card card-interactive card-glow-border group" data-aos="fade-up" data-aos-delay="300">
+                     <div class="card card-interactive card-glow-border group" data-aos="fade-up" data-aos-delay="300">
                          <div class="project-image-wrapper">
                             <img src="https://placehold.co/600x400/233554/64ffda?text=Drone+Sim+GIF" alt="Autonomous Drone Project Preview" class="project-image">
                          </div>
