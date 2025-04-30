@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
-<head>
+<html lang="en" class="scroll-smooth dark"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinmay Amrutkar | Engineering Intelligent Machines</title>
@@ -50,7 +49,8 @@
                         'glow-cyber-green-md': '0 0 15px rgba(100, 255, 218, 0.5)',
                     },
                     backgroundImage: {
-                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath d='M0 15h30M15 0v30' fill='none' stroke='%23112240' stroke-width='0.5'/%3E%3C/svg%3E\")", // Slightly larger grid
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath d='M0 15h30M15 0v30' fill='none' stroke='%23112240' stroke-width='0.5'/%3E%3C/svg%3E\")",
+                        'parallax-texture': "url('/assets/images/tech-texture.png')",
                     }
                 }
             }
@@ -70,7 +70,8 @@
         }
         /* Card styling */
         .card {
-            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter group; /* Added group */
+            /* FINAL FIX: Removed 'group' from this @apply rule */
+            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
         }
         .card-interactive { /* Card with hover effects */
              @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1.5;
@@ -91,20 +92,26 @@
             @apply px-5 py-2.5 rounded font-medium transition duration-300 ease-in-out inline-block text-center text-sm tracking-wide focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-navy focus:ring-cyber-green;
         }
         .btn-primary {
-            @apply bg-cyber-green text-navy font-bold hover:bg-opacity-90 shadow-md hover:shadow-lg hover:shadow-glow-cyber-green-sm transform hover:-translate-y-0.5; /* Adjusted glow */
+            @apply bg-cyber-green text-navy font-bold hover:bg-opacity-90 shadow-md hover:shadow-lg hover:shadow-glow-cyber-green-sm transform hover:-translate-y-0.5;
         }
         .btn-outline {
              @apply bg-transparent border border-cyber-green text-cyber-green hover:bg-cyber-green/10 transform hover:-translate-y-0.5;
         }
+        /* Scroll animation base (Handled by AOS now, but keep base opacity) */
+        [data-aos] {
+             /* opacity: 0; Start hidden if needed, AOS might handle this */
+             transition-property: transform, opacity; /* Ensure transitions are smooth */
+        }
+
         /* Project image styling */
-        .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; } /* Added bg color */
+        .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
         .project-image {
-            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-70 group-hover:opacity-100; /* Added opacity effect */
+            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-70 group-hover:opacity-100;
         }
         /* Model viewer styling */
         model-viewer {
-            @apply w-full h-96 rounded-lg border border-navy-lighter bg-navy; /* Basic styling */
-            --progress-bar-color: var(--cyber-green-default); /* Example customization */
+            @apply w-full h-96 rounded-lg border border-navy-lighter bg-navy;
+            --progress-bar-color: var(--cyber-green-default);
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
@@ -196,14 +203,12 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16 text-center" data-aos="fade-up">Featured Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                    <div class="card card-interactive card-glow-border" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card card-interactive card-glow-border group" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-image-wrapper">
-                             <img src="https://placehold.co/600x400/0a192f/64ffda?text=USV+Vision+GIF" alt="YOLOv8 on USV Project Preview" class="project-image">
+                            <img src="https://placehold.co/600x400/0a192f/64ffda?text=USV+Vision+GIF" alt="YOLOv8 on USV Project Preview" class="project-image">
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-tech-grey-light mb-3">YOLOv8 Object Detection on USV</h3>
-                            <p class="text-tech-grey mb-4 text-sm leading-relaxed">
-                                Real-time maritime object detection & tracking on an Unmanned Surface Vehicle using optimized YOLOv8 models deployed on embedded systems.
+                        <div class="p-6 flex flex-col"> <h3 class="text-xl font-semibold text-tech-grey-light mb-3">YOLOv8 Object Detection on USV</h3>
+                            <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow"> Real-time maritime object detection & tracking on an Unmanned Surface Vehicle using optimized YOLOv8 models deployed on embedded systems.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-5 text-xs font-medium font-mono">
                                 <span class="bg-navy-light text-cyber-green/80 px-3 py-1 rounded-full">YOLOv8</span>
@@ -211,20 +216,19 @@
                                 <span class="bg-navy-light text-cyber-green/80 px-3 py-1 rounded-full">ROS</span>
                                 <span class="bg-navy-light text-cyber-green/80 px-3 py-1 rounded-full">Embedded AI</span>
                             </div>
-                            <div class="flex space-x-4 text-tech-grey-lighter text-xl mt-auto pt-3">
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
+                            <div class="flex space-x-4 text-tech-grey-lighter text-xl mt-auto pt-2"> <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
                                 <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200" aria-label="Demo Video"><i class="fas fa-play-circle"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card card-interactive card-glow-border" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card card-interactive card-glow-border group" data-aos="fade-up" data-aos-delay="200">
                          <div class="project-image-wrapper">
                             <img src="https://placehold.co/600x400/112240/64ffda?text=Digital+Twin+GIF" alt="MyCobot Digital Twin Project Preview" class="project-image">
                          </div>
-                        <div class="p-6">
+                        <div class="p-6 flex flex-col">
                             <h3 class="text-xl font-semibold text-tech-grey-light mb-3">MyCobot Pro 600 Digital Twin</h3>
-                            <p class="text-tech-grey mb-4 text-sm leading-relaxed">
+                            <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
                                 High-fidelity digital twin development for simulation and validation of vision-based maze navigation algorithms using OpenCV and kinematics.
                             </p>
                              <div class="flex flex-wrap gap-2 mb-5 text-xs font-medium font-mono">
@@ -233,19 +237,19 @@
                                 <span class="bg-navy-light text-cyber-green/80 px-3 py-1 rounded-full">Simulation</span>
                                 <span class="bg-navy-light text-cyber-green/80 px-3 py-1 rounded-full">Python/MATLAB</span>
                             </div>
-                             <div class="flex space-x-4 text-tech-grey-lighter text-xl mt-auto pt-3">
+                             <div class="flex space-x-4 text-tech-grey-lighter text-xl mt-auto pt-2">
                                 <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card card-interactive card-glow-border" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card card-interactive card-glow-border group" data-aos="fade-up" data-aos-delay="300">
                          <div class="project-image-wrapper">
                             <img src="https://placehold.co/600x400/233554/64ffda?text=Drone+Sim+GIF" alt="Autonomous Drone Project Preview" class="project-image">
                          </div>
-                        <div class="p-6">
+                        <div class="p-6 flex flex-col">
                             <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Autonomous Drone with Simulink</h3>
-                            <p class="text-tech-grey mb-4 text-sm leading-relaxed">
+                            <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
                                 Design and simulation of robust autonomous flight control systems for UAVs using MATLAB/Simulink, focusing on path planning and obstacle avoidance.
                             </p>
                              <div class="flex flex-wrap gap-2 mb-5 text-xs font-medium font-mono">
@@ -254,7 +258,7 @@
                                  <span class="bg-navy-light text-cyber-green/80 px-3 py-1 rounded-full">Simulink</span>
                                  <span class="bg-navy-light text-cyber-green/80 px-3 py-1 rounded-full">Control Systems</span>
                              </div>
-                             <div class="flex space-x-4 text-tech-grey-lighter text-xl mt-auto pt-3">
+                             <div class="flex space-x-4 text-tech-grey-lighter text-xl mt-auto pt-2">
                                 <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-green transition-colors duration-200" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
                              </div>
                         </div>
@@ -275,7 +279,8 @@
                                   camera-controls
                                   ar
                                   shadow-intensity="1"
-                                  camera-orbit="-30deg 75deg 1.5m" exposure="1"
+                                  camera-orbit="-30deg 75deg 1.5m"
+                                  exposure="1"
                                   style="width: 100%; height: 450px; background-color: #0a192f; border-radius: 8px; border: 1px solid #233554;"
                                   loading="lazy">
                         <div class="progress-bar hide" slot="progress-bar">
@@ -337,9 +342,9 @@
              <div class="container mx-auto text-center max-w-xl">
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-6" data-aos="fade-up">Let's Collaborate</h2>
                 <p class="text-lg text-tech-grey mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-                    I love collaborating on cutting-edge robotics and computer vision systems. Whether you're working on autonomous systems, digital twins, or AI-driven robotics, I’d love to connect. Let’s build something intelligent together.
+                     I love collaborating on cutting-edge robotics and computer vision systems. Whether you're working on autonomous systems, digital twins, or AI-driven robotics, I’d love to connect. Let’s build something intelligent together.
                 </p>
-                <div class="flex justify-center space-x-6 text-3xl mb-10" data-aos="fade-up" data-aos-delay="200">
+                 <div class="flex justify-center space-x-6 text-3xl mb-10" data-aos="fade-up" data-aos-delay="200">
                      <a href="mailto:chinmay.amrutkar@asu.edu" class="text-tech-grey hover:text-cyber-green transition-colors duration-300 transform hover:scale-110 hover:shadow-glow-cyber-green-sm rounded-full" aria-label="Email"><i class="fas fa-envelope p-2"></i></a>
                      <a href="https://github.com/ChinmayAmrutkar" target="_blank" rel="noopener noreferrer" class="text-tech-grey hover:text-cyber-green transition-colors duration-300 transform hover:scale-110 hover:shadow-glow-cyber-green-sm rounded-full" aria-label="GitHub"><i class="fab fa-github p-2"></i></a>
                      <a href="https://www.linkedin.com/in/chinmay-amrutkar-153375209" target="_blank" rel="noopener noreferrer" class="text-tech-grey hover:text-cyber-green transition-colors duration-300 transform hover:scale-110 hover:shadow-glow-cyber-green-sm rounded-full" aria-label="LinkedIn"><i class="fab fa-linkedin p-2"></i></a>
@@ -349,7 +354,7 @@
                         Say Hello <i class="fas fa-paper-plane ml-2"></i>
                     </a>
                 </div>
-                 </div>
+            </div>
         </section>
     </main>
 
@@ -362,7 +367,7 @@
                      <a href="mailto:chinmay.amrutkar@asu.edu" class="hover:text-cyber-green transition-colors duration-200 transform hover:-translate-y-0.5" aria-label="Email"><i class="fas fa-envelope"></i></a>
              </div>
             <p>&copy; <span id="current-year"></span> Chinmay Amrutkar.</p>
-            <p class="mt-1.5 text-xs">Designed & Built with Intention.</p>
+            <p class="mt-1.5 text-xs">Built with Intention.</p>
         </div>
     </footer>
 
