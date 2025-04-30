@@ -1,0 +1,33 @@
+# _config.yml
+
+# Site settings
+title: Chinmay Amrutkar | Robotics Engineer # Appears in the browser tab
+email: chinmay.amrutkar@asu.edu
+description: >- # this means to ignore newlines until "baseurl:"
+  Dedicated Robotics Engineer with expertise in computer vision, image processing,
+  and robotic manipulation, fueled by a passion for robotics, AI and autonomous navigation.
+  Committed to developing cutting-edge algorithms for real-world challenges.
+baseurl: "" # Keep empty for user pages (your-username.github.io)
+url: "https://ChinmayAmrutkar.github.io" # Your site URL
+github_username:  ChinmayAmrutkar
+linkedin_username: chinmay-amrutkar-153375209 # The part after linkedin.com/in/
+google_scholar_id: a7ymhIIAAAAJ # Found in your Google Scholar URL
+
+# Build settings
+theme: minima # Use the Minima theme
+plugins:
+  - jekyll-feed
+
+# Minima theme settings
+minima:
+  skin: auto # Or choose 'dark', 'light'
+  # Social links section
+  social_links:
+    - { platform: github,         user_url: "https://github.com/ChinmayAmrutkar" }
+    - { platform: linkedin,       user_url: "https://www.linkedin.com/in/chinmay-amrutkar-153375209" }
+    # Custom Google Scholar link (using a generic 'link' icon if available, or platform name)
+    # Check Minima theme docs for supported platforms, might need custom CSS for a specific icon
+    - { platform: google_scholar, user_url: "https://scholar.google.com/citations?user=a7ymhIIAAAAJ&hl=en", title: "Google Scholar" } # Added title for clarity
+
+# Markdown processor
+markdown: kramdown
