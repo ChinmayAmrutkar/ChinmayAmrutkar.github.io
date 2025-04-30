@@ -13,7 +13,7 @@ Here are some of the key projects I've worked on or am currently involved in, de
 
 ---
 
-### Real-Time 3D Object Detection and Sensor Fusion (Ongoing)
+<!-- ### Real-Time 3D Object Detection and Sensor Fusion (Ongoing)
 * Researching LiDAR-based 3D object detection (voxel encoding, deep learning) and multi-sensor fusion (LiDAR/RGB) for autonomous driving, investigating real-time edge deployment challenges.
 * **Key Areas:** Deep Learning, 3D Computer Vision, Sensor Fusion, LiDAR, CUDA, Real-time Systems
 * [**Learn More &raquo;**]({{ site.baseurl }}{% link _projects/3d-object-detection.md %})
@@ -30,7 +30,7 @@ Here are some of the key projects I've worked on or am currently involved in, de
 ### Design and Prototyping of Robotic Arm for Waste Sorting using Computer Vision
 * Built and controlled a 4 DOF robotic arm (Arduino) for sorting recyclables, training a YOLOv7 model on 2000+ images for object detection.
 * **Key Technologies:** Robotic Arm Design, Arduino, Computer Vision, Deep Learning (YOLOv7), Object Detection, Python
-* [**Learn More &raquo;**]({{ site.baseurl }}{% link _projects/waste-sorting-arm.md %})
+* [**Learn More &raquo;**]({{ site.baseurl }}{% link _projects/waste-sorting-arm.md %}) -->
 
 ---
 
