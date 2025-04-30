@@ -2,25 +2,31 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // --- Initialize AOS (Animate On Scroll) ---
+    AOS.init({
+        duration: 600, // values from 0 to 3000, with step 50ms
+        easing: 'ease-in-out', // default easing for AOS animations
+        once: true, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    });
+
     // --- Mobile Menu Toggle ---
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = menuButton ? menuButton.querySelector('i') : null; // Get the icon element
+    const menuIcon = menuButton ? menuButton.querySelector('i') : null;
 
     if (menuButton && mobileMenu && menuIcon) {
         menuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Toggle icon between hamburger (fa-bars) and close (fa-times)
             menuIcon.classList.toggle('fa-bars');
             menuIcon.classList.toggle('fa-times');
         });
 
-        // Close mobile menu when a link inside it is clicked
         const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden'); // Hide the menu
-                // Ensure icon is reset to hamburger
+                mobileMenu.classList.add('hidden');
                 if (menuIcon.classList.contains('fa-times')) {
                     menuIcon.classList.remove('fa-times');
                     menuIcon.classList.add('fa-bars');
@@ -29,96 +35,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-    // --- Smooth Scrolling for Navigation Links ---
+    // --- Smooth Scrolling ---
     const scrollLinks = document.querySelectorAll('a[href*="#"]:not([href="#"])');
-
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const hash = this.hash;
-            const targetElement = document.querySelector(hash);
+            // Check if the link is internal before trying to scroll
+            if (hash.startsWith('#') && hash.length > 1) {
+                 const targetElement = document.querySelector(hash);
+                 if (targetElement) {
+                    e.preventDefault();
+                    const header = document.querySelector('header');
+                    const headerOffset = header ? header.offsetHeight : 70;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-            if (targetElement) {
-                e.preventDefault(); // Prevent default jump
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
 
-                const header = document.querySelector('header');
-                // Use a fallback height if header isn't found or rendered yet
-                const headerOffset = header ? header.offsetHeight : 60;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                // Calculate final scroll position considering header offset
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth" // Enable smooth scrolling
-                });
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                         if (menuIcon.classList.contains('fa-times')) {
+                            menuIcon.classList.remove('fa-times');
+                            menuIcon.classList.add('fa-bars');
+                        }
+                    }
+                }
             }
+            // Allow default behavior for external links or resume download
         });
     });
 
-    // --- Update Active Nav Link on Scroll ---
+    // --- Active Nav Link Highlighting ---
     const sections = document.querySelectorAll('main section[id]');
-    const navLinks = document.querySelectorAll('header .hidden.md\\:flex a.nav-link'); // Target desktop nav links
+    const navLinks = document.querySelectorAll('header .hidden.md\\:flex a.nav-link'); // Target only desktop links
+    const headerOffsetForNav = (document.querySelector('header')?.offsetHeight || 70) + 100; // Increased buffer
 
     function changeNavOnScroll() {
         let currentSectionId = '';
-        const headerOffset = document.querySelector('header')?.offsetHeight || 60;
-        // Add a small buffer to trigger active state slightly earlier
-        const scrollBuffer = 50;
-
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerOffset - scrollBuffer;
-            // Check if the current scroll position is past the top of the section
-            if (window.pageYOffset >= sectionTop) {
-                currentSectionId = section.getAttribute('id');
+            // Ensure section exists and has an offsetTop property
+            if (section && typeof section.offsetTop === 'number') {
+                const sectionTop = section.offsetTop - headerOffsetForNav;
+                if (window.pageYOffset >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
             }
         });
 
+         // Handle edge case: If scrolled to the very top, no section might be active
+        if (window.pageYOffset < sections[0]?.offsetTop - headerOffsetForNav) {
+             currentSectionId = ''; // Or set to 'hero' if you have a 'Home' link
+        }
+
         navLinks.forEach(link => {
-            link.classList.remove('active'); // Reset all links
-            // Add 'active' class if the link's href matches the current section ID
+            link.classList.remove('active');
             if (link.getAttribute('href') === `#${currentSectionId}`) {
                 link.classList.add('active');
             }
         });
     }
 
-    // --- Scroll Animation Trigger ---
-    // Select all elements marked for animation
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-
-    // Create an Intersection Observer instance
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // If the element is intersecting (visible)
-            if (entry.isIntersecting) {
-                // Get the animation type from the data attribute
-                const animationType = entry.target.dataset.animation || 'fade-in-up'; // Default to fade-in-up
-                // Add the corresponding Tailwind animation class
-                entry.target.classList.add(`animate-${animationType}`);
-                // Optional: Stop observing the element once it has animated
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1 // Trigger when 10% of the element is visible
-        // rootMargin: '0px 0px -50px 0px' // Optional: Adjust trigger point vertically
-    });
-
-    // Observe each element marked for animation
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-
-
-    // --- Footer: Update Current Year ---
+    // --- Footer Year ---
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // --- Initial Calls on Load ---
-    // Run scroll-based functions once on load to set initial states
-    changeNavOnScroll();
+    // --- Initial Calls & Listeners ---
+    window.addEventListener('scroll', changeNavOnScroll);
+    changeNavOnScroll(); // Initial check on load
 
 }); // End DOMContentLoaded
