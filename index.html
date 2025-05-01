@@ -55,18 +55,9 @@
         .section-padding { @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24; }
 
         /* Card base */
-        .card {
-            /* FINAL FIX v4: Removed 'group' from this @apply rule */
-            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
-        }
-        .card-interactive {
-             /* 'group' class needs to be on the HTML element for group-hover */
-             @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1;
-        }
-        .card-glow-border {
-             /* 'group' class needs to be on the HTML element for group-hover */
-             @apply hover:shadow-glow-cyber-green-sm;
-        }
+        .card { @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter; }
+        .card-interactive { @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1; }
+        .card-glow-border { @apply hover:shadow-glow-cyber-green-sm; }
 
         /* Nav links */
         .nav-link { @apply text-tech-grey hover:text-cyber-green transition-colors duration-200 pb-1 text-sm font-medium relative after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-0.5 after:bg-cyber-green after:transition-all after:duration-300; }
@@ -80,27 +71,23 @@
 
         /* Project image */
         .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
-        .project-image {
-             /* 'group' class needs to be on the parent card element in HTML */
-            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100;
-        }
+        .project-image { @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100; }
 
         /* Tech Stack */
-        .tech-icon-container {
-             /* 'group' class needs to be on the HTML element */
-             @apply flex flex-col items-center gap-2 text-center;
-        }
-        .tech-icon {
-             /* 'group' class needs to be on the container div in HTML */
-             @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green;
-        }
-        .tech-label {
-             /* 'group' class needs to be on the container div in HTML */
-             @apply text-xs text-tech-grey-dark group-hover:text-tech-grey;
-        }
+        .tech-icon-container { @apply flex flex-col items-center gap-2 text-center group; }
+        .tech-icon { @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green; }
+        .tech-label { @apply text-xs text-tech-grey-dark group-hover:text-tech-grey; }
 
         /* Quote */
         .quote-section { @apply border-l-4 border-cyber-green pl-6 italic text-tech-grey-lighter; }
+
+        /* Publication/Award Item */
+        .achievement-item {
+             @apply bg-navy-light p-5 rounded-md border border-navy-lighter flex items-start space-x-5 transition-all duration-300 hover:border-cyber-green/50 hover:shadow-lg; /* Adjusted items-start */
+        }
+        .achievement-icon {
+             @apply text-2xl text-cyber-green flex-shrink-0 w-6 text-center mt-1; /* Added margin-top */
+        }
 
         /* Swiper Carousel Styles */
         .swiper-container { @apply w-full overflow-hidden relative; }
@@ -332,7 +319,7 @@
                         </div>
 
                         <div class="swiper-slide">
-                             <a href="https://github.com/ChinmayAmrutkar/Integration-of-MyCobot-Pro-600-and-Digital-Twin-for-Maze-Navigation" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
+                             <a href="[LINK_TO_MYCOBOT_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
                                         <img src="assets/images/project-mycobot-preview.gif" alt="MyCobot Digital Twin Navigation Preview" class="project-image"> </div>
                                     <div class="p-6 flex flex-col flex-grow">
@@ -360,29 +347,61 @@
 
         <section id="publications" class="section-padding bg-navy">
             <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16 text-center" data-aos="fade-up">Publications & Awards</h2>
-                <div class="max-w-3xl mx-auto space-y-6">
-                    <div class="bg-navy-light p-5 rounded-md border border-navy-lighter flex items-center space-x-5 transition-colors duration-300 hover:border-cyber-green/50" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-award text-2xl text-cyber-green flex-shrink-0 w-6 text-center"></i>
-                        <div>
-                            <h3 class="text-lg font-medium text-tech-grey-light">Featured Project on Hackster.io</h3>
-                            <p class="text-tech-grey text-sm">[Specific Project Name] showcased.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16 text-center" data-aos="fade-up">Publications & Achievements</h2>
+
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-semibold text-cyber-green mb-8 text-center md:text-left">Publications</h3>
+                        <div class="space-y-6">
+                            <a href="https://link.springer.com/article/10.1007/s12008-023-01320-w" target="_blank" rel="noopener noreferrer" class="achievement-item group">
+                                <i class="fas fa-file-alt achievement-icon"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">A state-of-the-art review on robotics in waste sorting...</h4>
+                                    <p class="text-tech-grey text-sm italic">Intl. Journal on Interactive Design & Manufacturing (IJIDeM), 2023</p>
+                                </div>
+                            </a>
+                            <a href="https://link.springer.com/chapter/10.1007/978-3-031-34648-4_25" target="_blank" rel="noopener noreferrer" class="achievement-item group">
+                                <i class="fas fa-file-alt achievement-icon"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">Overview of Autonomous Vehicles and Its Challenges</h4>
+                                    <p class="text-tech-grey text-sm italic">Techno-Societal 2022. ICATSA 2022. Springer, Cham</p>
+                                </div>
+                            </a>
+                            <a href="https://www.hackster.io/Elephant-Robotics-Official/maze-navigation-user-case-based-on-robot-vision-system-5dddaf" target="_blank" rel="noopener noreferrer" class="achievement-item group">
+                                <i class="fas fa-file-alt achievement-icon"></i> <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">Maze Navigation User Case Based on Robot Vision System</h4>
+                                    <p class="text-tech-grey text-sm italic">Hackster.io by Elephant Robotics</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="bg-navy-light p-5 rounded-md border border-navy-lighter flex items-center space-x-5 transition-colors duration-300 hover:border-cyber-green/50" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-file-alt text-2xl text-cyber-green flex-shrink-0 w-6 text-center"></i>
-                        <div>
-                            <h3 class="text-lg font-medium text-tech-grey-light">Robotics in Waste Sorting Review</h3>
-                            <p class="text-tech-grey text-sm italic">Intl. Journal on Interactive Design & Manufacturing (IJIDeM), 2023</p>
-                        </div>
+
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-2xl font-semibold text-cyber-green mb-8 text-center md:text-left">Awards & Achievements</h3>
+                        <div class="space-y-6">
+                            <div class="achievement-item">
+                                 <i class="fas fa-medal achievement-icon"></i>
+                                 <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light">Academic Honors & Scholarships</h4>
+                                    <ul class="list-disc list-inside text-tech-grey text-sm mt-1 space-y-1">
+                                        <li>NAMU University Scholarship ($10,000)</li>
+                                        <li>ASU Engineering Fellowship ($1,000)</li>
+                                        <li>Graduated as Gold Medalist (B.Tech)</li>
+                                        <li>3× Merit Scholarship Holder ($3,750)</li>
+                                    </ul>
+                                 </div>
+                            </div>
+                             <div class="achievement-item">
+                                 <i class="fas fa-award achievement-icon"></i>
+                                 <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light">Hackster.io Feature</h4>
+                                    <p class="text-tech-grey text-sm">Project "[Specific Project Name]" featured by the community.</p>
+                                 </div>
+                            </div>
+                            </div>
                     </div>
-                    <div class="bg-navy-light p-5 rounded-md border border-navy-lighter flex items-center space-x-5 transition-colors duration-300 hover:border-cyber-green/50" data-aos="fade-up" data-aos-delay="300">
-                         <i class="fas fa-medal text-2xl text-cyber-green flex-shrink-0 w-6 text-center"></i>
-                         <div>
-                            <h3 class="text-lg font-medium text-tech-grey-light">Academic Honors</h3>
-                            <p class="text-tech-grey text-sm">Gold Medalist (B.Tech), Merit Scholarships, ASU NAMU Scholar & Engineering Fellow.</p>
-                         </div>
-                    </div>
+
                 </div>
             </div>
         </section>
