@@ -55,9 +55,18 @@
         .section-padding { @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24; }
 
         /* Card base */
-        .card { @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter; }
-        .card-interactive { @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1; }
-        .card-glow-border { @apply hover:shadow-glow-cyber-green-sm; }
+        .card {
+            /* THIS IS THE CORRECTED LINE - 'group' removed from @apply */
+            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
+        }
+        .card-interactive {
+             /* 'group' class needs to be on the HTML element for group-hover */
+             @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1;
+        }
+        .card-glow-border {
+             /* 'group' class needs to be on the HTML element for group-hover */
+             @apply hover:shadow-glow-cyber-green-sm;
+        }
 
         /* Nav links */
         .nav-link { @apply text-tech-grey hover:text-cyber-green transition-colors duration-200 pb-1 text-sm font-medium relative after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-0.5 after:bg-cyber-green after:transition-all after:duration-300; }
@@ -71,19 +80,35 @@
 
         /* Project image */
         .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
-        .project-image { @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100; }
+        .project-image {
+             /* 'group' class needs to be on the parent card element in HTML */
+            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100;
+        }
 
         /* Tech Stack */
-        .tech-icon-container { @apply flex flex-col items-center gap-2 text-center group; }
-        .tech-icon { @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green; }
-        .tech-label { @apply text-xs text-tech-grey-dark group-hover:text-tech-grey; }
+        .tech-icon-container {
+             /* 'group' class needs to be on the HTML element */
+             @apply flex flex-col items-center gap-2 text-center;
+        }
+        .tech-icon {
+             /* 'group' class needs to be on the container div in HTML */
+             @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green;
+        }
+        .tech-label {
+             /* 'group' class needs to be on the container div in HTML */
+             @apply text-xs text-tech-grey-dark group-hover:text-tech-grey;
+        }
 
         /* Quote */
         .quote-section { @apply border-l-4 border-cyber-green pl-6 italic text-tech-grey-lighter; }
 
         /* Publication/Award Item */
-        .achievement-item { @apply bg-navy-light p-5 rounded-md border border-navy-lighter flex items-start space-x-5 transition-all duration-300 hover:border-cyber-green/50 hover:shadow-lg; }
-        .achievement-icon { @apply text-2xl text-cyber-green flex-shrink-0 w-6 text-center mt-1; }
+        .achievement-item {
+             @apply bg-navy-light p-5 rounded-md border border-navy-lighter flex items-start space-x-5 transition-all duration-300 hover:border-cyber-green/50 hover:shadow-lg;
+        }
+        .achievement-icon {
+             @apply text-2xl text-cyber-green flex-shrink-0 w-6 text-center mt-1;
+        }
         a.achievement-item { @apply block; }
 
         /* Swiper Carousel Styles */
@@ -154,7 +179,7 @@
                             Robotics • Computer Vision • AI
                         </h3>
                         <p class="text-base md:text-lg text-tech-grey-lighter max-w-xl mb-10" data-aos="fade-up" data-aos-delay="400">
-                            A Robotics Engineer crafting perception systems for autonomous agents. Currently pursuing an M.S. at ASU, passionate about bridging AI theory with real-world robotic applications.
+                            A Robotics Engineer crafting perception systems for autonomous agents. Currently pursuing Masters in Robotics and Autonomous Systems in Artificial Intelligence at ASU, passionate about bridging AI theory with real-world robotic applications.
                         </p>
                         <div data-aos="fade-up" data-aos-delay="500">
                             <a href="#projects" class="btn btn-primary mr-4">Explore Projects</a>
@@ -198,6 +223,7 @@
                 </div>
             </div>
         </section>
+
         <section id="skills" class="section-padding bg-navy">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16" data-aos="fade-up">Skills & Technologies</h2>
@@ -410,8 +436,7 @@
                                  </div>
                             </div>
                             <div class="achievement-item card-glow-border">
-                                 <i class="fas fa-trophy achievement-icon"></i>
-                                 <div>
+                                 <i class="fas fa-trophy achievement-icon"></i> <div>
                                     <h4 class="text-lg font-medium text-tech-grey-light">InnovationHacks 2025: Pitch Perfect</h4>
                                     <ul class="list-disc list-inside text-tech-grey text-sm mt-1 space-y-1">
                                         <li>
