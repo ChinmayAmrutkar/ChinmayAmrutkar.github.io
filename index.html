@@ -55,18 +55,9 @@
         .section-padding { @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24; }
 
         /* Card base */
-        .card {
-            /* THIS IS THE CORRECTED LINE - 'group' removed from @apply */
-            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
-        }
-        .card-interactive {
-             /* 'group' class needs to be on the HTML element for group-hover */
-             @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1;
-        }
-        .card-glow-border {
-             /* 'group' class needs to be on the HTML element for group-hover */
-             @apply hover:shadow-glow-cyber-green-sm;
-        }
+        .card { @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter; }
+        .card-interactive { @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1; }
+        .card-glow-border { @apply hover:shadow-glow-cyber-green-sm; }
 
         /* Nav links */
         .nav-link { @apply text-tech-grey hover:text-cyber-green transition-colors duration-200 pb-1 text-sm font-medium relative after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-0.5 after:bg-cyber-green after:transition-all after:duration-300; }
@@ -80,24 +71,12 @@
 
         /* Project image */
         .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
-        .project-image {
-             /* 'group' class needs to be on the parent card element in HTML */
-            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100;
-        }
+        .project-image { @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100; }
 
         /* Tech Stack */
-        .tech-icon-container {
-             /* 'group' class needs to be on the HTML element */
-             @apply flex flex-col items-center gap-2 text-center;
-        }
-        .tech-icon {
-             /* 'group' class needs to be on the container div in HTML */
-             @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green;
-        }
-        .tech-label {
-             /* 'group' class needs to be on the container div in HTML */
-             @apply text-xs text-tech-grey-dark group-hover:text-tech-grey;
-        }
+        .tech-icon-container { @apply flex flex-col items-center gap-2 text-center group; }
+        .tech-icon { @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green; }
+        .tech-label { @apply text-xs text-tech-grey-dark group-hover:text-tech-grey; }
 
         /* Quote */
         .quote-section { @apply border-l-4 border-cyber-green pl-6 italic text-tech-grey-lighter; }
@@ -109,6 +88,8 @@
         .achievement-icon {
              @apply text-2xl text-cyber-green flex-shrink-0 w-6 text-center mt-1;
         }
+        /* Make entire achievement item clickable if it's a link */
+        a.achievement-item { @apply block; }
 
         /* Swiper Carousel Styles */
         .swiper-container { @apply w-full overflow-hidden relative; }
@@ -389,14 +370,20 @@
                                     <p class="text-tech-grey text-sm italic">Techno-Societal 2022. ICATSA 2022. Springer, Cham</p>
                                 </div>
                             </a>
-                            
+                            <a href="https://www.hackster.io/Elephant-Robotics-Official/maze-navigation-user-case-based-on-robot-vision-system-5dddaf" target="_blank" rel="noopener noreferrer" class="achievement-item group">
+                                <i class="fas fa-link achievement-icon"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">Maze Navigation User Case Based on Robot Vision System</h4>
+                                    <p class="text-tech-grey text-sm italic">Hackster.io by Elephant Robotics</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div data-aos="fade-up" data-aos-delay="200">
                         <h3 class="text-2xl font-semibold text-cyber-green mb-8 text-center md:text-left">Awards & Achievements</h3>
                         <div class="space-y-6">
-                            <div class="achievement-item">
+                            <div class="achievement-item card-glow-border">
                                  <i class="fas fa-medal achievement-icon"></i>
                                  <div>
                                     <h4 class="text-lg font-medium text-tech-grey-light">Academic Honors & Scholarships</h4>
@@ -408,18 +395,29 @@
                                     </ul>
                                  </div>
                             </div>
-                            <a href="https://www.hackster.io/Elephant-Robotics-Official/maze-navigation-user-case-based-on-robot-vision-system-5dddaf" target="_blank" rel="noopener noreferrer" class="achievement-item card-glow-border group">
-                                <i class="fas fa-link achievement-icon"></i>
-                                <div>
-                                  <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">
-                                    Maze Navigation User Case Based on Robot Vision System
-                                  </h4>
-                                  <p class="text-tech-grey text-sm italic">Hackster.io by Elephant Robotics</p>
-                                </div>
-                              </a>
-                              
+                             <div class="achievement-item card-glow-border">
+                                 <i class="fas fa-award achievement-icon"></i>
+                                 <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light">Hackster.io Feature</h4>
+                                    <p class="text-tech-grey text-sm">Project "Maze Navigation User Case Based on Robot Vision System" featured.</p>
+                                    <a href="https://www.hackster.io/Elephant-Robotics-Official/maze-navigation-user-case-based-on-robot-vision-system-5dddaf" target="_blank" rel="noopener noreferrer" class="text-xs text-cyber-green/80 hover:text-cyber-green inline-block mt-1">View Feature <i class="fas fa-external-link-alt text-xs ml-1"></i></a>
+                                 </div>
                             </div>
+                            <div class="achievement-item card-glow-border">
+                                 <i class="fas fa-trophy achievement-icon"></i> <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light">InnovationHacks 2025: Pitch Perfect</h4>
+                                    <ul class="list-disc list-inside text-tech-grey text-sm mt-1 space-y-1">
+                                        <li>
+                                            <strong class="text-tech-grey-lighter">🥇 Best Use of MATLAB by MathWorks:</strong> Used MATLAB for facial verification comparing profile images with live video frames.
+                                        </li>
+                                         <li>
+                                            <strong class="text-tech-grey-lighter">🥈 2nd Prize in Qruil: Job Board Features:</strong> Built a smart interview system analyzing sentiment, relevance, and behavior.
+                                        </li>
+                                    </ul>
+                                    <a href="https://devpost.com/software/pitch-perfect-9hju2n" target="_blank" rel="noopener noreferrer" class="text-xs text-cyber-green/80 hover:text-cyber-green inline-block mt-2">View Devpost <i class="fas fa-external-link-alt text-xs ml-1"></i></a>
+                                 </div>
                             </div>
+                        </div>
                     </div>
 
                 </div>
