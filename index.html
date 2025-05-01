@@ -55,9 +55,18 @@
         .section-padding { @apply py-20 px-6 md:py-28 md:px-10 lg:px-16 xl:px-24; }
 
         /* Card base */
-        .card { @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter; }
-        .card-interactive { @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1; }
-        .card-glow-border { @apply hover:shadow-glow-cyber-green-sm; }
+        .card {
+            /* FINAL FIX v4: Removed 'group' from this @apply rule */
+            @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
+        }
+        .card-interactive {
+             /* 'group' class needs to be on the HTML element for group-hover */
+             @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1;
+        }
+        .card-glow-border {
+             /* 'group' class needs to be on the HTML element for group-hover */
+             @apply hover:shadow-glow-cyber-green-sm;
+        }
 
         /* Nav links */
         .nav-link { @apply text-tech-grey hover:text-cyber-green transition-colors duration-200 pb-1 text-sm font-medium relative after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-0.5 after:bg-cyber-green after:transition-all after:duration-300; }
@@ -71,23 +80,34 @@
 
         /* Project image */
         .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
-        .project-image { @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100; }
+        .project-image {
+             /* 'group' class needs to be on the parent card element in HTML */
+            @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100;
+        }
 
         /* Tech Stack */
-        .tech-icon-container { @apply flex flex-col items-center gap-2 text-center group; }
-        .tech-icon { @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green; }
-        .tech-label { @apply text-xs text-tech-grey-dark group-hover:text-tech-grey; }
+        .tech-icon-container {
+             /* 'group' class needs to be on the HTML element */
+             @apply flex flex-col items-center gap-2 text-center;
+        }
+        .tech-icon {
+             /* 'group' class needs to be on the container div in HTML */
+             @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green;
+        }
+        .tech-label {
+             /* 'group' class needs to be on the container div in HTML */
+             @apply text-xs text-tech-grey-dark group-hover:text-tech-grey;
+        }
 
         /* Quote */
         .quote-section { @apply border-l-4 border-cyber-green pl-6 italic text-tech-grey-lighter; }
 
         /* Swiper Carousel Styles */
         .swiper-container { @apply w-full overflow-hidden relative; }
-        .swiper-slide { @apply !h-auto; } /* Ensure slides adapt height */
+        .swiper-slide { @apply !h-auto; }
         .swiper-button-next, .swiper-button-prev {
             @apply text-cyber-green bg-navy-light rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-navy-lighter hover:scale-110;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 50%; transform: translateY(-50%);
         }
         .swiper-button-next::after, .swiper-button-prev::after { @apply text-sm font-extrabold; }
         .swiper-button-prev { @apply -left-2 md:-left-4; }
@@ -244,7 +264,8 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16 text-center" data-aos="fade-up">Featured Projects</h2>
 
                 <div class="swiper-container relative px-8 md:px-12" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper pb-4"> <div class="swiper-slide">
+                    <div class="swiper-wrapper pb-4">
+                        <div class="swiper-slide">
                              <a href="https://github.com/ChinmayAmrutkar/Machine-Vision-Projects/tree/main/3D-Reconstruction-of-ARISPE-Meteorite-using-Neural-Radiance-Fields" target="_blank" rel="noopener noreferrer" class="block h-full group">
                                 <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
