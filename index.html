@@ -74,28 +74,20 @@
         .project-image { @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100; }
 
         /* Tech Stack */
-        .tech-icon-container {
-             /* FIX: Removed 'group' from @apply */
-             @apply flex flex-col items-center gap-2 text-center;
-        }
-        .tech-icon {
-             /* 'group' class needs to be added to the container div in HTML */
-             @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green;
-        }
-        .tech-label {
-             /* 'group' class needs to be added to the container div in HTML */
-             @apply text-xs text-tech-grey-dark group-hover:text-tech-grey;
-        }
+        .tech-icon-container { @apply flex flex-col items-center gap-2 text-center group; }
+        .tech-icon { @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green; }
+        .tech-label { @apply text-xs text-tech-grey-dark group-hover:text-tech-grey; }
 
         /* Quote */
         .quote-section { @apply border-l-4 border-cyber-green pl-6 italic text-tech-grey-lighter; }
 
         /* Swiper Carousel Styles */
         .swiper-container { @apply w-full overflow-hidden relative; }
-        .swiper-slide { @apply !h-auto; }
+        .swiper-slide { @apply !h-auto; } /* Ensure slides adapt height */
         .swiper-button-next, .swiper-button-prev {
             @apply text-cyber-green bg-navy-light rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-navy-lighter hover:scale-110;
-            top: 50%; transform: translateY(-50%);
+            top: 50%;
+            transform: translateY(-50%);
         }
         .swiper-button-next::after, .swiper-button-prev::after { @apply text-sm font-extrabold; }
         .swiper-button-prev { @apply -left-2 md:-left-4; }
@@ -252,10 +244,8 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16 text-center" data-aos="fade-up">Featured Projects</h2>
 
                 <div class="swiper-container relative px-8 md:px-12" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                             <a href="[LINK_TO_NERF_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group">
+                    <div class="swiper-wrapper pb-4"> <div class="swiper-slide">
+                             <a href="https://github.com/ChinmayAmrutkar/Machine-Vision-Projects/tree/main/3D-Reconstruction-of-ARISPE-Meteorite-using-Neural-Radiance-Fields" target="_blank" rel="noopener noreferrer" class="block h-full group">
                                 <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
                                         <img src="assets/images/project-nerf-preview.gif" alt="NeRF 3D Reconstruction Preview" class="project-image">
@@ -277,10 +267,10 @@
                         </div>
 
                         <div class="swiper-slide">
-                            <a href="[LINK_TO_PITCHPERFECT_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group">
+                            <a href="https://github.com/ChinmayAmrutkar/InnovationHacks-2025" target="_blank" rel="noopener noreferrer" class="block h-full group">
                                 <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
-                                        <img src="assets/images/project-pitchperfect-preview.gif" alt="Pitch Perfect AI Interview Platform Preview" class="project-image">
+                                        <img src="assets/images/project-pitchperfect-preview.jpg" alt="Pitch Perfect AI Interview Platform Preview" class="project-image">
                                     </div>
                                     <div class="p-6 flex flex-col flex-grow">
                                         <h3 class="text-xl font-semibold text-tech-grey-light mb-3">InnovationHacks 2025: Pitch Perfect</h3>
@@ -299,7 +289,7 @@
                         </div>
 
                         <div class="swiper-slide">
-                            <a href="[LINK_TO_DRONE_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group">
+                            <a href="https://github.com/ChinmayAmrutkar/Autonomous-Line-Following-and-Landing-of-a-Parrot-Mambo-Minidrone-Using-Simulink?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" class="block h-full group">
                                 <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
                                         <img src="assets/images/project-drone-preview.gif" alt="Autonomous Drone Project Preview" class="project-image">
@@ -314,6 +304,26 @@
                                             <i class="fas fa-project-diagram" title="Simulink"></i>
                                             <i class="fas fa-plane-departure" title="UAV"></i>
                                             <i class="fas fa-microchip" title="Embedded Systems"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide">
+                             <a href="[LINK_TO_MYCOBOT_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
+                                    <div class="project-image-wrapper">
+                                        <img src="assets/images/project-mycobot-preview.gif" alt="MyCobot Digital Twin Navigation Preview" class="project-image"> </div>
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">MyCobot + Digital Twin Navigation</h3>
+                                        <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
+                                            Digital twin-based robot simulation using OpenCV + MATLAB inverse kinematics for precise motion planning and control.
+                                        </p>
+                                        <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
+                                            <i class="devicon-opencv-plain" title="OpenCV"></i>
+                                            <i class="devicon-matlab-plain" title="MATLAB"></i>
+                                            <i class="fas fa-cube" title="Simulation/Digital Twin"></i>
+                                            <i class="fas fa-robot" title="Robotics"></i>
                                         </div>
                                     </div>
                                 </div>
