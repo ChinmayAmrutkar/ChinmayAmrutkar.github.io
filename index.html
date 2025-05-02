@@ -56,15 +56,12 @@
 
         /* Card base */
         .card {
-            /* THIS IS THE CORRECTED LINE - 'group' removed from @apply */
             @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
         }
         .card-interactive {
-             /* 'group' class needs to be on the HTML element for group-hover */
              @apply hover:border-cyber-green/50 hover:shadow-xl hover:-translate-y-1;
         }
         .card-glow-border {
-             /* 'group' class needs to be on the HTML element for group-hover */
              @apply hover:shadow-glow-cyber-green-sm;
         }
 
@@ -193,36 +190,24 @@
         </section>
 
         <section id="about" class="section-padding bg-navy-light">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-12 text-center" data-aos="fade-up">About Me</h2>
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div data-aos="fade-right" data-aos-delay="100">
-                        <div class="text-lg text-tech-grey-lighter space-y-5 leading-relaxed mb-10">
-                             <p>
-                                Driven by a fascination for how machines perceive and interact with the physical world, I specialize in the intersection of <strong class="text-cyber-green/90 font-medium">Computer Vision</strong>, <strong class="text-cyber-green/90 font-medium">Artificial Intelligence</strong>, and <strong class="text-cyber-green/90 font-medium">Robotics</strong>.
-                            </p>
-                            <p>
-                                My academic foundation includes a Gold Medalist B.Tech in Robotics & Automation from MIT World Peace University and ongoing M.S. studies in Robotics & Autonomous Systems (AI) at <strong class="text-cyber-green/90 font-medium">Arizona State University</strong>.
-                            </p>
-                             <p>
-                                From developing perception pipelines for Unmanned Surface Vehicles using YOLOv8 to creating high-fidelity digital twins for robotic arms like the MyCobot, I enjoy building robust, efficient systems that solve tangible problems. I thrive on collaboration and the challenge of translating complex algorithms into practical, intelligent automation.
-                            </p>
-                        </div>
-                        <blockquote class="quote-section text-lg">
-                            "My goal is to engineer systems that not only perceive the world intelligently but also act upon it effectively and safely."
-                        </blockquote>
-                    </div>
-                    <div data-aos="fade-left" data-aos-delay="200">
-                        <div class="rounded-lg overflow-hidden shadow-xl border border-navy-lighter">
-                            <video class="w-full h-auto" autoplay loop muted playsinline poster="assets/images/video-poster.png"> <source src="assets/videos/about-me-video.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
+            <div class="container mx-auto max-w-4xl" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-8 text-center">About Me</h2>
+                <div class="text-lg text-tech-grey-lighter space-y-5 leading-relaxed mx-auto max-w-3xl mb-12">
+                     <p>
+                        Driven by a fascination for how machines perceive and interact with the physical world, I specialize in the intersection of <strong class="text-cyber-green/90 font-medium">Computer Vision</strong>, <strong class="text-cyber-green/90 font-medium">Artificial Intelligence</strong>, and <strong class="text-cyber-green/90 font-medium">Robotics</strong>.
+                    </p>
+                    <p>
+                        My academic foundation includes a Gold Medalist B.Tech in Robotics & Automation from MIT World Peace University and ongoing M.S. studies in Robotics & Autonomous Systems (AI) at <strong class="text-tech-grey-light">Arizona State University</strong>.
+                    </p>
+                     <p>
+                        From developing perception pipelines for Unmanned Surface Vehicles using YOLOv8 to creating high-fidelity <strong class="text-cyber-green/90 font-medium">digital twins</strong> for robotic arms like the MyCobot, I enjoy building robust, efficient systems that solve tangible problems. I thrive on collaboration and the challenge of translating complex algorithms into practical, intelligent automation.
+                    </p>
                 </div>
+                 <blockquote class="quote-section max-w-2xl mx-auto text-center text-lg" data-aos="fade-up" data-aos-delay="100">
+                    "My goal is to engineer systems that not only perceive the world intelligently but also act upon it effectively and safely."
+                </blockquote>
             </div>
         </section>
-
         <section id="skills" class="section-padding bg-navy">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16" data-aos="fade-up">Skills & Technologies</h2>
@@ -371,7 +356,27 @@
                             </a>
                         </div>
 
-                    </div>
+                        <div class="swiper-slide">
+                             <a href="https://github.com/ChinmayAmrutkar/RAS-SES-598-Space-Robotics-and-AI/tree/main/assignments/cart_pole_optimal_control" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
+                                    <div class="project-image-wrapper">
+                                        <img src="assets/images/project-cartpole-preview.gif" alt="Cart-Pole Optimal Control Preview" class="project-image"> </div>
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Cart-Pole Optimal Control (LQR)</h3>
+                                        <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
+                                            Tuning and analysis of an LQR controller for cart-pole stability under simulated earthquake disturbances using ROS2.
+                                        </p>
+                                        <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
+                                            <i class="devicon-python-plain" title="Python"></i>
+                                            <i class="devicon-ros-plain" title="ROS"></i>
+                                            <i class="fas fa-cogs" title="Control Systems"></i>
+                                            <i class="fas fa-cube" title="Simulation"></i>
+                                            <span class="font-mono ml-auto">LQR</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
@@ -399,6 +404,13 @@
                                 <div>
                                     <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">Overview of Autonomous Vehicles and Its Challenges</h4>
                                     <p class="text-tech-grey text-sm italic">Techno-Societal 2022. ICATSA 2022. Springer, Cham</p>
+                                </div>
+                            </a>
+                            <a href="https://www.hackster.io/Elephant-Robotics-Official/maze-navigation-user-case-based-on-robot-vision-system-5dddaf" target="_blank" rel="noopener noreferrer" class="achievement-item group">
+                                <i class="fas fa-link achievement-icon"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">Maze Navigation User Case Based on Robot Vision System</h4>
+                                    <p class="text-tech-grey text-sm italic">Hackster.io by Elephant Robotics</p>
                                 </div>
                             </a>
                         </div>
