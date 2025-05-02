@@ -78,7 +78,7 @@
         /* Project image */
         .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
         .project-image {
-             /* 'group' class needs to be on the parent card element in HTML */
+            /* 'group' class needs to be on the parent card element in HTML */
             @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100;
         }
 
@@ -106,7 +106,7 @@
         .achievement-icon {
              @apply text-2xl text-cyber-green flex-shrink-0 w-6 text-center mt-1;
         }
-        a.achievement-item { @apply block; }
+        a.achievement-item { @apply block; } /* Make link items block level */
 
         /* Swiper Carousel Styles */
         .swiper-container { @apply w-full overflow-hidden relative; }
@@ -176,7 +176,7 @@
                             Robotics • Computer Vision • AI
                         </h3>
                         <p class="text-base md:text-lg text-tech-grey-lighter max-w-xl mb-10" data-aos="fade-up" data-aos-delay="400">
-                            A Robotics Engineer crafting perception systems for autonomous agents. Currently pursuing Masters in Robotics and Autonomous Systems in Artificial Intelligence at ASU, passionate about bridging AI theory with real-world robotic applications.
+                            A Robotics Engineer crafting perception and control systems for autonomous agents. Currently pursuing Masters in Robotics and Autonomous Systems in Artificial Intelligence at ASU, passionate about bridging AI theory with real-world robotic applications.
                         </p>
                         <div data-aos="fade-up" data-aos-delay="500">
                             <a href="#projects" class="btn btn-primary mr-4">Explore Projects</a>
@@ -208,6 +208,7 @@
                 </blockquote>
             </div>
         </section>
+
         <section id="skills" class="section-padding bg-navy">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-16" data-aos="fade-up">Skills & Technologies</h2>
@@ -321,23 +322,22 @@
                                         <img src="assets/images/project-drone-preview.gif" alt="Autonomous Drone Project Preview" class="project-image">
                                     </div>
                                     <div class="p-6 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Autonomous Drone Line Following & Landing</h3>
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Autonomous Drone (Simulink)</h3>
                                         <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
-                                            Custom line detection and landing logic using Simulink Stateflow for a Parrot Mambo drone, utilizing lightweight onboard image processing.
+                                            Design and simulation of robust autonomous flight control systems for UAVs using MATLAB/Simulink, focusing on path planning and obstacle avoidance.
                                         </p>
                                         <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
                                             <i class="devicon-matlab-plain" title="MATLAB"></i>
                                             <i class="fas fa-project-diagram" title="Simulink"></i>
                                             <i class="fas fa-plane-departure" title="UAV"></i>
-                                            <i class="fas fa-microchip" title="Embedded Systems"></i>
-                                        </div>
+                                            <i class="fas fa-cogs" title="Control Systems"></i> </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
 
                         <div class="swiper-slide">
-                             <a href="[LINK_TO_MYCOBOT_REPO]" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
+                             <a href="https://github.com/ChinmayAmrutkar/Integration-of-MyCobot-Pro-600-and-Digital-Twin-for-Maze-Navigation" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
                                         <img src="assets/images/project-mycobot-preview.gif" alt="MyCobot Digital Twin Navigation Preview" class="project-image"> </div>
                                     <div class="p-6 flex flex-col flex-grow">
@@ -376,6 +376,27 @@
                                 </div>
                             </a>
                         </div>
+
+                        <div class="swiper-slide">
+                             <a href="https://github.com/ChinmayAmrutkar/Vision-Guided-Precision-Landing-of-a-Parrot-Mambo-Minidrone-on-a-Moving-Platform" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
+                                    <div class="project-image-wrapper">
+                                        <img src="assets/images/project-parrot-landing-preview.gif" alt="Parrot Drone Vision Landing Preview" class="project-image"> </div>
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Vision-Based Drone Landing (Parrot Mambo)</h3>
+                                        <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
+                                            Autonomous landing on a moving platform using onboard vision (HSV segmentation, blob analysis) and Stateflow control logic in MATLAB/Simulink.
+                                        </p>
+                                        <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
+                                            <i class="devicon-matlab-plain" title="MATLAB"></i>
+                                            <i class="fas fa-project-diagram" title="Simulink/Stateflow"></i>
+                                            <i class="fas fa-eye" title="Computer Vision"></i>
+                                            <i class="fas fa-plane-departure" title="UAV"></i>
+                                            <i class="fas fa-microchip" title="Embedded"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                         </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -406,13 +427,6 @@
                                     <p class="text-tech-grey text-sm italic">Techno-Societal 2022. ICATSA 2022. Springer, Cham</p>
                                 </div>
                             </a>
-                            <a href="https://www.hackster.io/Elephant-Robotics-Official/maze-navigation-user-case-based-on-robot-vision-system-5dddaf" target="_blank" rel="noopener noreferrer" class="achievement-item group">
-                                <i class="fas fa-link achievement-icon"></i>
-                                <div>
-                                    <h4 class="text-lg font-medium text-tech-grey-light group-hover:text-cyber-green transition-colors duration-300">Maze Navigation User Case Based on Robot Vision System</h4>
-                                    <p class="text-tech-grey text-sm italic">Hackster.io by Elephant Robotics</p>
-                                </div>
-                            </a>
                         </div>
                     </div>
 
@@ -440,7 +454,8 @@
                                  </div>
                             </div>
                             <div class="achievement-item card-glow-border">
-                                 <i class="fas fa-trophy achievement-icon"></i> <div>
+                                 <i class="fas fa-trophy achievement-icon"></i>
+                                 <div>
                                     <h4 class="text-lg font-medium text-tech-grey-light">InnovationHacks 2025: Pitch Perfect</h4>
                                     <ul class="list-disc list-inside text-tech-grey text-sm mt-1 space-y-1">
                                         <li>
@@ -459,7 +474,6 @@
                 </div>
             </div>
         </section>
-
         <section id="resume" class="section-padding bg-navy-light">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-8" data-aos="fade-up">Resume</h2>
