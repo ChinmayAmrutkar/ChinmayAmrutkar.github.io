@@ -48,43 +48,62 @@ document.addEventListener('DOMContentLoaded', function() {
     //     },
     // });
     // --- Initialize Swiper for Project Carousel ---
-        const swiper = new Swiper('.swiper-container', {
-            slidesPerView: 3,
-            grid: {
-                rows: 2,
-                fill: 'row',
-            },
-            spaceBetween: 30,
-            loop: false,
+    // This initializes the Swiper library on the element with the class 'swiper-container'.
+    const swiper = new Swiper('.swiper-container', {
+        // Configuration for the carousel
+        loop: false, // Don't loop infinitely
+        slidesPerView: 1, // Default for mobile: 1 slide visible
+        slidesPerGroup: 1,
+        spaceBetween: 30, // Space between slides
 
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+        // Settings for arranging slides in a grid
+        grid: {
+            rows: 1, // Default for mobile: 1 row
+        },
 
-            a11y: {
-                prevSlideMessage: 'Previous project',
-                nextSlideMessage: 'Next project',
-            },
-
-            breakpoints: {
-                // For mobile: 1 slide per view, 1 row
-                0: {
-                    slidesPerView: 1,
-                    grid: { rows: 1 },
+        // Responsive breakpoints to change settings based on screen width
+        breakpoints: {
+            // For screens 768px wide or larger (tablets)
+            768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: 30,
+                grid: {
+                    rows: 2, // 2 rows on tablet
+                    fill: 'row',
                 },
-                // Tablets: 2x2 layout
-                768: {
-                    slidesPerView: 2,
-                    grid: { rows: 2 },
-                },
-                // Desktop: 3x2 layout
-                1024: {
-                    slidesPerView: 3,
-                    grid: { rows: 2 },
+            },
+            // For screens 1024px wide or larger (desktops)
+            1024: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+                spaceBetween: 40,
+                grid: {
+                    rows: 2, // 2 rows on desktop, creating the 2x3 grid
+                    fill: 'row',
                 },
             }
-        });
+        },
+
+        // Enable navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // Optional: Add pagination dots for better usability
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+
+        // Improve accessibility
+        a11y: {
+            prevSlideMessage: 'Previous project',
+            nextSlideMessage: 'Next project',
+        },
+    });
+
 
 
 
