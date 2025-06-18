@@ -13,40 +13,79 @@ document.addEventListener('DOMContentLoaded', function() {
         anchorPlacement: 'top-bottom', // Trigger animation when the top of the element hits the bottom of the window
     });
 
+    // // --- Initialize Swiper for Project Carousel ---
+    // // This initializes the Swiper library on the element with the class 'swiper-container'.
+    // const swiper = new Swiper('.swiper-container', {
+    //     // Configuration options for the carousel
+    //     loop: false, // Don't loop back to the beginning after the last slide
+    //     slidesPerView: 1, // Show 1 slide at a time on mobile by default
+    //     spaceBetween: 30, // Space between slides in pixels
+
+    //     // Responsive breakpoints to change settings based on screen width
+    //     breakpoints: {
+    //         // For screens 768px wide or larger (tablets)
+    //         768: {
+    //             slidesPerView: 2, // Show 2 slides
+    //             spaceBetween: 30
+    //         },
+    //         // For screens 1024px wide or larger (desktops)
+    //         1024: {
+    //             slidesPerView: 3, // Show 3 slides
+    //             spaceBetween: 40 // Increase space slightly
+    //         }
+    //     },
+
+    //     // Enable navigation arrows
+    //     navigation: {
+    //         nextEl: '.swiper-button-next', // CSS selector for the 'next' button
+    //         prevEl: '.swiper-button-prev', // CSS selector for the 'previous' button
+    //     },
+
+    //     // Improve accessibility
+    //     a11y: {
+    //         prevSlideMessage: 'Previous project', // ARIA label for previous button
+    //         nextSlideMessage: 'Next project',     // ARIA label for next button
+    //     },
+    // });
     // --- Initialize Swiper for Project Carousel ---
-    // This initializes the Swiper library on the element with the class 'swiper-container'.
-    const swiper = new Swiper('.swiper-container', {
-        // Configuration options for the carousel
-        loop: false, // Don't loop back to the beginning after the last slide
-        slidesPerView: 1, // Show 1 slide at a time on mobile by default
-        spaceBetween: 30, // Space between slides in pixels
-
-        // Responsive breakpoints to change settings based on screen width
-        breakpoints: {
-            // For screens 768px wide or larger (tablets)
-            768: {
-                slidesPerView: 2, // Show 2 slides
-                spaceBetween: 30
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            grid: {
+                rows: 2,
+                fill: 'row',
             },
-            // For screens 1024px wide or larger (desktops)
-            1024: {
-                slidesPerView: 3, // Show 3 slides
-                spaceBetween: 40 // Increase space slightly
+            spaceBetween: 30,
+            loop: false,
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            a11y: {
+                prevSlideMessage: 'Previous project',
+                nextSlideMessage: 'Next project',
+            },
+
+            breakpoints: {
+                // For mobile: 1 slide per view, 1 row
+                0: {
+                    slidesPerView: 1,
+                    grid: { rows: 1 },
+                },
+                // Tablets: 2x2 layout
+                768: {
+                    slidesPerView: 2,
+                    grid: { rows: 2 },
+                },
+                // Desktop: 3x2 layout
+                1024: {
+                    slidesPerView: 3,
+                    grid: { rows: 2 },
+                },
             }
-        },
+        });
 
-        // Enable navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next', // CSS selector for the 'next' button
-            prevEl: '.swiper-button-prev', // CSS selector for the 'previous' button
-        },
-
-        // Improve accessibility
-        a11y: {
-            prevSlideMessage: 'Previous project', // ARIA label for previous button
-            nextSlideMessage: 'Next project',     // ARIA label for next button
-        },
-    });
 
 
     // --- Mobile Menu Toggle ---
