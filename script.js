@@ -224,7 +224,7 @@ Your role is to guide students, recruiters, collaborators, or curious engineers 
 
         } catch (error) {
             console.error("Error calling serverless function:", error);
-            addMessageToChat('ai', "I'm having trouble connecting to the AI service right now. Please try again later.");
+            addMessageToChat('ai', "I'm having trouble connecting to the AI service right now. Please try again later. Visit actual website https://chinmayamrutkar.netlify.app/");
         } finally {
             chatSendBtn.disabled = false;
         }
