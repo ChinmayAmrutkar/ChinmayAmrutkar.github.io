@@ -6,19 +6,26 @@
     <title>Chinmay Amrutkar | Engineering Intelligent Machines</title>
     <meta name="description" content="Chinmay Amrutkar's portfolio: Robotics Engineer specializing in Computer Vision, AI, and building intelligent autonomous systems.">
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Dev Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
+    <!-- Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- AOS (Animate On Scroll) Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
+    <!-- Favicon Placeholder -->
     <link rel="icon" href="/assets/images/favicon.png" type="image/png">
 
     <script>
@@ -56,6 +63,7 @@
 
         /* Card base */
         .card {
+            /* CORRECTED: 'group' is NOT used with @apply. It's added to the HTML element directly. */
             @apply bg-navy-light rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out border border-navy-lighter;
         }
         .card-interactive {
@@ -78,21 +86,17 @@
         /* Project image */
         .project-image-wrapper { @apply overflow-hidden rounded-t-lg bg-navy; }
         .project-image {
-            /* 'group' class needs to be on the parent card element in HTML */
             @apply w-full h-52 object-cover transition-all duration-500 ease-out filter grayscale group-hover:grayscale-0 group-hover:scale-105 opacity-75 group-hover:opacity-100;
         }
 
         /* Tech Stack */
         .tech-icon-container {
-             /* 'group' class needs to be on the HTML element */
              @apply flex flex-col items-center gap-2 text-center;
         }
         .tech-icon {
-             /* 'group' class needs to be on the container div in HTML */
              @apply text-4xl text-tech-grey transition-colors duration-300 group-hover:text-cyber-green;
         }
         .tech-label {
-             /* 'group' class needs to be on the container div in HTML */
              @apply text-xs text-tech-grey-dark group-hover:text-tech-grey;
         }
 
@@ -100,17 +104,14 @@
         .quote-section { @apply border-l-4 border-cyber-green pl-6 italic text-tech-grey-lighter; }
 
         /* Publication/Award Item */
-        .achievement-item {
-             @apply bg-navy-light p-5 rounded-md border border-navy-lighter flex items-start space-x-5 transition-all duration-300 hover:border-cyber-green/50 hover:shadow-lg;
-        }
-        .achievement-icon {
-             @apply text-2xl text-cyber-green flex-shrink-0 w-6 text-center mt-1;
-        }
-        a.achievement-item { @apply block; } /* Make link items block level */
+        .achievement-item { @apply bg-navy-light p-5 rounded-md border border-navy-lighter flex items-start space-x-5 transition-all duration-300 hover:border-cyber-green/50 hover:shadow-lg; }
+        .achievement-icon { @apply text-2xl text-cyber-green flex-shrink-0 w-6 text-center mt-1; }
+        a.achievement-item { @apply block; }
 
         /* Swiper Carousel Styles */
         .swiper-container { @apply w-full overflow-hidden relative; }
-        .swiper-slide { @apply !h-auto; }
+        .swiper-slide { @apply !h-auto flex; }
+        .swiper-slide > a { @apply w-full; }
         .swiper-button-next, .swiper-button-prev {
             @apply text-cyber-green bg-navy-light rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-navy-lighter hover:scale-110;
             top: 50%; transform: translateY(-50%);
@@ -120,7 +121,14 @@
         .swiper-button-next { @apply -right-2 md:-right-4; }
         .swiper-pagination-bullet { @apply bg-tech-grey-dark; }
         .swiper-pagination-bullet-active { @apply bg-cyber-green; }
-        
+
+        /* AI Chat Widget Styles */
+        .chat-message { @apply p-3 rounded-lg max-w-[85%] text-sm leading-relaxed; }
+        .user-message { @apply bg-cyber-green text-navy self-end ml-auto rounded-br-none; }
+        .ai-message { @apply bg-navy-lighter text-tech-grey-lighter self-start rounded-bl-none; }
+        .chat-input { @apply w-full bg-navy border border-navy-lighter rounded-md p-2 text-sm text-tech-grey-light focus:outline-none focus:ring-1 focus:ring-cyber-green placeholder-tech-grey-dark; }
+        .chat-send-btn { @apply bg-cyber-green text-navy rounded-md p-2 hover:bg-opacity-90 disabled:bg-tech-grey-dark disabled:cursor-not-allowed; }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0a192f; }
@@ -164,7 +172,7 @@
     </header>
 
     <main>
-
+        <!-- Sections remain the same -->
         <section id="hero" class="section-padding min-h-[calc(100vh-70px)] flex items-center relative overflow-hidden bg-navy bg-grid-pattern">
              <div class="container mx-auto relative z-10">
                  <div class="flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-10 md:gap-16">
@@ -199,10 +207,10 @@
                         Driven by a fascination for how machines perceive and interact with the physical world, I specialize in the intersection of <strong class="text-cyber-green/90 font-medium">Computer Vision</strong>, <strong class="text-cyber-green/90 font-medium">Artificial Intelligence</strong>, and <strong class="text-cyber-green/90 font-medium">Robotics</strong>.
                     </p>
                     <p>
-                        My academic foundation includes a Gold Medalist B.Tech in Robotics & Automation from MIT World Peace University and ongoing M.S. studies in Robotics & Autonomous Systems (AI) at <strong class="text-cyber-green/90 font-medium">Arizona State University</strong>.
+                        My academic foundation includes a Gold Medalist B.Tech in Robotics & Automation from MIT World Peace University and ongoing M.S. studies in Robotics & Autonomous Systems (AI) at <strong class="text-tech-grey-light">Arizona State University</strong>.
                     </p>
                      <p>
-                        From developing perception pipelines for Unmanned Surface Vehicles using YOLOv8 to creating high-fidelity digital twins for robotic arms like the MyCobot, I enjoy building robust, efficient systems that solve tangible problems. I thrive on collaboration and the challenge of translating complex algorithms into practical, intelligent automation.
+                        From developing perception pipelines for Unmanned Surface Vehicles using YOLOv8 to creating high-fidelity <strong class="text-cyber-green/90 font-medium">digital twins</strong> for robotic arms like the MyCobot, I enjoy building robust, efficient systems that solve tangible problems. I thrive on collaboration and the challenge of translating complex algorithms into practical, intelligent automation.
                     </p>
                 </div>
                  <blockquote class="quote-section max-w-2xl mx-auto text-center text-lg" data-aos="fade-up" data-aos-delay="100">
@@ -385,7 +393,6 @@
                             </a>
                         </div>
                         
-
                         <div class="swiper-slide">
                              <a href="https://github.com/ChinmayAmrutkar/RAS-SES-598-Space-Robotics-and-AI/tree/main/assignments/cart_pole_optimal_control" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
@@ -408,15 +415,13 @@
                         </div>
 
                         <div class="swiper-slide">
-                            <a href="https://github.com/ChinmayAmrutkar/Vision-Guided-Precision-Landing-of-a-Parrot-Mambo-Minidrone-on-a-Moving-Platform" target="_blank" rel="noopener noreferrer" class="block h-full group">
-                                <div class="card card-interactive card-glow-border h-full flex flex-col">
+                             <a href="https://github.com/ChinmayAmrutkar/Vision-Guided-Precision-Landing-of-a-Parrot-Mambo-Minidrone-on-a-Moving-Platform" target="_blank" rel="noopener noreferrer" class="block h-full group"> <div class="card card-interactive card-glow-border h-full flex flex-col">
                                     <div class="project-image-wrapper">
-                                        <img src="assets/images/project-parrot-landing-preview.gif" alt="Parrot Drone Precision Landing Preview" class="project-image">
-                                    </div>
+                                        <img src="assets/images/project-parrot-landing-preview.gif" alt="Parrot Drone Vision Landing Preview" class="project-image"> </div>
                                     <div class="p-6 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Drone Precision Landing on Moving Platform</h3>
+                                        <h3 class="text-xl font-semibold text-tech-grey-light mb-3">Vision-Based Drone Landing (Parrot Mambo)</h3>
                                         <p class="text-tech-grey mb-4 text-sm leading-relaxed flex-grow">
-                                            Fully onboard vision-based landing system for the Parrot Mambo drone. Uses HSV segmentation, blob analysis, and Stateflow logic to detect, align, and descend onto a moving platform with high accuracy.
+                                            Autonomous landing on a moving platform using onboard vision (HSV segmentation, blob analysis) and Stateflow control logic in MATLAB/Simulink.
                                         </p>
                                         <div class="flex items-center space-x-3 text-tech-grey-dark text-xs mb-4 border-t border-navy-lighter pt-3 mt-auto">
                                             <i class="devicon-matlab-plain" title="MATLAB"></i>
@@ -429,7 +434,7 @@
                                 </div>
                             </a>
                         </div>
-
+                        
                         <div class="swiper-slide">
                             <a href="https://github.com/ChinmayAmrutkar/Quadcopter-Flight-Control-System-X-Configuration-MATLAB-Simulink/" target="_blank" rel="noopener noreferrer" class="block h-full group">
                                 <div class="card card-interactive card-glow-border h-full flex flex-col">
@@ -498,7 +503,7 @@
                             </a>
                             </div>
                         
-                </div>
+                        </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
@@ -586,6 +591,7 @@
                 </div>
             </div>
         </section>
+
         <section id="resume" class="section-padding bg-navy-light">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-tech-grey-light mb-8" data-aos="fade-up">Resume</h2>
@@ -634,26 +640,26 @@
     </footer>
 
     <!-- ADD AI AGENT HTML BEFORE SCRIPT TAGS -->
-    <div id="chat-widget-container">
+    <div class="fixed bottom-5 right-5 z-50" id="chat-widget-container">
         <!-- Floating bubble button -->
-        <div id="chat-bubble" class="animate-pulse-glow">
-            <i class="fas fa-robot"></i>
+        <div id="chat-bubble" class="w-16 h-16 bg-cyber-green rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-glow-cyber-green-md animate-pulse-glow">
+            <i class="fas fa-robot text-navy text-2xl"></i>
         </div>
         <!-- Chat window -->
-        <div id="chat-window" class="hidden">
-            <div class="chat-header">
+        <div id="chat-window" class="hidden fixed bottom-24 right-5 w-full max-w-sm h-[60vh] max-h-[480px] bg-navy-light rounded-lg shadow-2xl flex flex-col transition-all duration-300 ease-out origin-bottom-right">
+            <div class="p-3 bg-navy-lighter rounded-t-lg text-center text-tech-grey-light font-semibold text-sm flex justify-between items-center">
                 <span>AI Assistant</span>
                 <button id="close-chat-btn" class="text-tech-grey hover:text-white">&times;</button>
             </div>
-            <div id="chat-body" class="chat-body">
+            <div id="chat-body" class="flex-grow p-4 overflow-y-auto space-y-4">
                 <!-- Initial AI message -->
-                <div class="ai-message chat-message">
+                <div class="chat-message ai-message">
                     Hello! I'm Chinmay's AI assistant. Ask me about his skills, projects, or experience.
                 </div>
             </div>
-            <div class="chat-footer">
-                <input type="text" id="chat-input" class="chat-input" placeholder="Ask a question...">
-                <button id="chat-send-btn" class="chat-send-btn">
+            <div class="p-2 border-t border-navy-lighter flex items-center gap-2">
+                <input type="text" id="chat-input" class="w-full bg-navy border border-navy-lighter rounded-md p-2 text-sm text-tech-grey-light focus:outline-none focus:ring-1 focus:ring-cyber-green placeholder-tech-grey-dark" placeholder="Ask a question...">
+                <button id="chat-send-btn" class="bg-cyber-green text-navy rounded-md p-2 hover:bg-opacity-90 disabled:bg-tech-grey-dark disabled:cursor-not-allowed">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
