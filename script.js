@@ -182,11 +182,20 @@ Your role is to guide students, recruiters, collaborators, or curious engineers 
         getAIResponse();
     }
 
-    function addMessageToChat(sender, message) {
+    function addMessageToChat(sender, message, isHtml = false) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('chat-message');
         messageDiv.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
-        messageDiv.textContent = message;
+        
+        if (isHtml) {
+            // If the message is HTML, use innerHTML to render it.
+            // This is safe because we are only rendering HTML from our trusted 'marked' library.
+            messageDiv.innerHTML = message;
+        } else {
+            // For user messages, always use textContent to prevent security issues.
+            messageDiv.textContent = message;
+        }
+        
         chatBody.appendChild(messageDiv);
         chatBody.scrollTop = chatBody.scrollHeight;
     }
