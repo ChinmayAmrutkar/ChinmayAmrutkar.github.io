@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const knowledgeBaseElement = document.getElementById('ai-knowledge-base');
     const knowledgeBase = knowledgeBaseElement ? knowledgeBaseElement.textContent.trim() : "No information available.";
 
-    const systemPrompt = `You are a helpful, detailed, and knowledgeable AI assistant named "ChinAI" trained on the professional background, skills, and projects of Chinmay Amrutkar — a Robotics and AI Engineer pursuing a Master's in Robotics and Autonomous Systems (AI track) at Arizona State University.
+    const systemPrompt = `You are a helpful, detailed, and knowledgeable AI assistant named "MayBot" trained on the professional background, skills, and projects of Chinmay Amrutkar — a Robotics and AI Engineer pursuing a Master's in Robotics and Autonomous Systems (AI track) at Arizona State University.
 
 Your goal is to assist visitors by answering questions related to Chinmay's experiences, technical work, skills, career journey, tools used, project decisions, motivations, and reflections. 
 
@@ -145,7 +145,6 @@ Always:
 - If unsure, say “I don’t have that information, but I can help you explore it.”
 
 Your role is to guide students, recruiters, collaborators, or curious engineers with accurate and insightful responses that reflect Chinmay’s journey and mindset.
-
 
     Here is all the information about Chinmay Amrutkar:
     ${knowledgeBase}`;
@@ -193,38 +192,22 @@ Your role is to guide students, recruiters, collaborators, or curious engineers 
     }
 
     async function getAIResponse() {
-        const payload = {
-            contents: [
-                {
-                    role: "user",
-                    parts: [{ text: `${systemPrompt}\n\nQuestion: ${chatHistory[chatHistory.length - 1].parts[0].text}` }]
-                }
-            ]
-        };
+        // Construct the full prompt that the serverless function will receive.
+        const fullPrompt = `${systemPrompt}\n\nQuestion: ${chatHistory[chatHistory.length - 1].parts[0].text}`;
 
-        // --- CHANGE: ADD YOUR API KEY HERE ---
-        const apiKey = "AIzaSyCMj7cv8eCsH9mTzVSTn72Q6raTMZL1Ds4";
-        
-        if (apiKey === "PASTE_YOUR_API_KEY_HERE") {
-             addMessageToChat('ai', "The AI agent is not configured. The site owner needs to add an API key.");
-             chatSendBtn.disabled = false;
-             return;
-        }
-
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        // The URL for our secure, middleman Netlify function.
+        // This path is automatically handled by Netlify during deployment.
+        const functionUrl = '/.netlify/functions/get-ai-response';
 
         try {
-            const response = await fetch(apiUrl, {
+            const response = await fetch(functionUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({ prompt: fullPrompt }) // Send the full prompt in the body
             });
 
             if (!response.ok) {
-                if (response.status === 403) {
-                     throw new Error(`API request failed: 403 Forbidden. This may be an API key or permission issue.`);
-                }
-                throw new Error(`API request failed with status ${response.status}`);
+                throw new Error(`Server function failed with status ${response.status}`);
             }
 
             const result = await response.json();
@@ -240,8 +223,8 @@ Your role is to guide students, recruiters, collaborators, or curious engineers 
             chatHistory.push({ role: "model", parts: [{ text: aiResponseText }] });
 
         } catch (error) {
-            console.error("Error fetching AI response:", error);
-            addMessageToChat('ai', "I'm having trouble connecting right now. This could be due to an API permission issue. Please try again later.");
+            console.error("Error calling serverless function:", error);
+            addMessageToChat('ai', "I'm having trouble connecting to the AI service right now. Please try again later.");
         } finally {
             chatSendBtn.disabled = false;
         }
@@ -252,4 +235,4 @@ Your role is to guide students, recruiters, collaborators, or curious engineers 
     window.addEventListener('scroll', changeNavOnScroll);
     changeNavOnScroll();
 
-}); // End DOMContentLoaded
+});
