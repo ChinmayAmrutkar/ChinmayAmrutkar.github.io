@@ -670,152 +670,144 @@
 
     <!-- AI KNOWLEDGE BASE (HIDDEN) -->
     <script id="ai-knowledge-base" type="text/plain">
-    # 👤 Chinmay Amrutkar – Robotics & AI Engineer
+    Chinmay Amrutkar – Robotics & AI Engineer
 
-    My name is Chinmay Amrutkar, originally from India, and currently pursuing a Master’s in Robotics and Autonomous Systems (AI track) at Arizona State University (ASU). I hold a Gold Medal in B.Tech in Robotics and Automation from MIT World Peace University. My journey began with hands-on mechanical and embedded systems like EV drivetrain design, but over time I transitioned into intelligent robotic software — blending AI, perception, planning, and control.
+My name is Chinmay Amrutkar, originally from India. I am currently pursuing a Master’s in Robotics and Autonomous Systems (AI track) at Arizona State University (ASU), and I hold a Gold Medal in B.Tech in Robotics and Automation from MIT World Peace University.
 
-    I specialize in designing real-world autonomous systems that can **see, think, and act**. My work ranges from simulating control systems and training neural fields to deploying real robots in the field (like drones and USVs). I take pride in understanding the full stack — from sensor input to actuation.
+I specialize in building real-world autonomous systems that integrate sensing, reasoning, and acting — across domains like drones, autonomous surface vessels, digital twins, and robotic arms. I’m passionate about solving full-stack robotics problems involving perception, motion planning, and control — using tools like ROS, PX4, OpenCV, PyTorch, and Simulink.
 
-    ---
+---
 
-    # 🧠 Skills & Tools
+Professional Experience
 
-    ### ▶ Programming Languages
-    - **Python**: Primary language for robotics, AI models, simulation, and system integration.
-    - **C++**: Used for ROS nodes, PX4 firmware, and real-time performance optimization.
-    - **MATLAB / Simulink**: Ideal for model-based design, control systems, simulations, and Stateflow logic.
-    - **C / Java**: Used in earlier embedded and academic projects.
+Graduate Engineering Trainee, Jabil Inc. (Jan 2024 – Jul 2024)
+• Led the development of an automated ESD wristband monitoring system, reducing electrostatic discharge risk and improving uptime.
+• Worked on the Temperature and Wave Pallet Monitoring Systems, covering schematic design, component selection, and firmware development.
+• Designed custom 3D-printed enclosures for safety-critical hardware.
+• Interacted with global procurement teams, customers, and vendors to align engineering solutions with business needs.
+• Pioneered lean automation concepts and collaborated on robot selection for future factory automation strategies.
 
-    ### ▶ Robotics & AI Frameworks
-    - **ROS 1 & 2**, **PX4 Autopilot**, **Gazebo**, **RViz**, **MoveIt**
-    - **OpenCV**, **PyTorch**, **TensorFlow**, **PCL**
-    - **Docker**, **Git**, **Linux**, **VTD**, **Adams**, **SolidWorks**
+Intern – R&D Quality Assurance, Hexagon Manufacturing Intelligence (Feb 2023 – Aug 2023)
+• Automated manual test cases for Adams View software using Python, Java, Git, and Sikuli, improving efficiency and reducing human errors.
+• Created a low-code automation tool enabling non-programmers to input test scenarios and generate scripts intuitively.
+• Developed expertise in Virtual Test Drive (VTD), Adams, and multi-body dynamics tools.
+• Quickly adapted to evolving R&D team goals and collaborated with cross-national teams effectively.
 
-    ### ▶ Domain Expertise
-    - Visual Perception (YOLO, HSV, arUco, NeRF)
-    - Motion Planning (Boustrophedon, Cartesian IK, trajectory slicing)
-    - Real-Time Control (PID, LQR, shared autonomy)
-    - Embedded AI (NVIDIA Jetson, onboard drones)
-    - Digital Twins (robot simulation + real sync)
-    - UAV/USV control systems and safety protocols
+Captain, Team Bolt (Jul 2019 – Jul 2023)
+• Led a 14-member team in building innovative electric vehicles for SAE competitions.
+• Designed a double-reduction drivetrain using toothed belts for quiet, high-torque operation.
+• Integrated autonomous braking, RFID/Bluetooth ignition, and safety features like side-stand and alcohol detection.
+• Promoted a culture of research and technical creativity, mentoring teammates on CAD, FEA, electronics, and control.
 
-    ---
+---
 
-    # 🚀 Projects (with Goals & Learnings)
+Technical Skills
 
-    ### 1. **Autonomous Trash Collecting ASV – ICRA 2025**
-    - **Goal**: Automate trash detection and collection on water using a Heron USV.
-    - **Tech**: YOLOv8 for detection, ROS for planner, Gazebo + PX4 simulation.
-    - **Impact**: Presented at IEEE ICRA 2025 “Robots in the Wild.”
-    - **Lesson**: Real-world environments introduce noise (e.g., water reflection), requiring robust perception and dynamic replanning.
+Languages: Python, C++, MATLAB, Simulink, C, Java  
+Frameworks: ROS1/2, PX4, Gazebo, MoveIt, RTAB-Map, OpenCV, PyTorch, TensorFlow  
+Tools: Git, Docker, VTD, Adams, SolidWorks, Linux  
+Specializations: Visual Perception (YOLO, arUco, NeRF), Motion Planning, Shared Autonomy, Sim-to-Real Robotics, Embedded AI (Jetson), Real-Time Control, Digital Twins
 
-    ### 2. **CBAM-FPN-ResNet18 for KITTI 3D Object Detection**
-    - **Goal**: Improve SFA3D’s detection of small, occluded objects.
-    - **Tech**: PyTorch, CBAM attention, KITTI dataset, mAP evaluation.
-    - **Result**: Enhanced accuracy while maintaining real-time FPS.
-    - **Lesson**: Attention mechanisms like CBAM offer lightweight but powerful boosts to detection, especially in challenging scenes.
+---
 
-    ### 3. **Drone Landing on a Moving Platform (Simulink)**
-    - **Goal**: Fully onboard autonomous landing with minimal processing.
-    - **Tech**: HSV segmentation, blob analysis, Simulink + Stateflow for logic.
-    - **Lesson**: Sensor noise + motion uncertainty = intense tuning. Iteration, simulation, and fallback logic were essential.
+Selected Projects
 
-    ### 4. **MyCobot Maze Navigation with Digital Twin**
-    - **Goal**: Navigate a maze using a real robotic arm + digital twin sync.
-    - **Tech**: OpenCV for marker tracking, MATLAB for IK, TCP comms.
-    - **Lesson**: Synchronization and calibration between real and sim helped verify path planning robustness.
+Autonomous Trash Collecting ASV (ICRA 2025)
+• Built a USV using Gazebo + PX4 to detect and collect trash using YOLOv8.
+• Overcame challenges from water reflections and dynamic obstacles.
+• Presented at IEEE ICRA 2025 “Robots in the Wild”.
 
-    ### 5. **Latency-Aware Low-Level Teleop Controller**
-    - **Goal**: Make remote robot control feel smooth despite delay.
-    - **Tech**: Shared autonomy blending, control prediction.
-    - **Lesson**: Delays ruin intuition. Predictive modeling and motion smoothing help preserve usability.
+CBAM-FPN-ResNet18 for KITTI 3D Object Detection
+• Enhanced SFA3D with CBAM attention to improve detection of occluded/small objects.
+• Achieved higher mAP on KITTI while preserving real-time performance.
 
-    ### 6. **Geological Mapping & Landing UAV**
-    - **Goal**: Use RGBD + vision to identify tallest rock and land.
-    - **Tech**: ROS 2, PX4, ArUco detection, RTAB-Map.
-    - **Lesson**: Sensor fusion and dynamic terrain estimation are critical for precise, vision-based decisions.
+Drone Landing on a Moving Platform
+• Built a fully onboard drone landing system using HSV segmentation in Simulink and Stateflow.
+• Tuned against sensor noise and dynamic platform motion.
 
-    ### 7. **Interview Ranker (Hackathon Winner)**
-    - **Goal**: Build a video-based AI interviewer that rates responses.
-    - **Tech**: Whisper.cpp for ASR, Vander for emotion, Olama for relevance.
-    - **Award**: 1st Place – Best Use of MATLAB | 2nd Prize in Qruil Job Tools.
-    - **Lesson**: Pipeline matters — real-time audio/video processing needs thoughtful API and model chaining.
+MyCobot Digital Twin Maze Navigation
+• Used OpenCV, MATLAB IK, and TCP comms to sync real + sim robots.
+• Verified planning consistency between twin environments.
 
-    ### 8. **Quadcopter FCS (Simulink)**
-    - **Goal**: Build a complete 6-DOF controller for a quadrotor.
-    - **Tech**: Nested PID loops, mixer logic, 3D model tracking.
-    - **Lesson**: Understanding motor mixing and tuning gains was key to stability and responsiveness.
+Latency-Aware Low-Level Teleop Controller
+• Designed a predictive, shared-autonomy controller for smooth remote robot control.
+• Compensated for communication delays using motion smoothing.
 
-    ### 9. **Wrist Band Monitoring System (Industry Project)**
-    - **Goal**: Verify ESD grounding to reduce manufacturing defects.
-    - **Impact**: Reduced downtime via hot-swappable modules.
-    - **Lesson**: Reliability > complexity. Safety systems need fast recoverability and fault tolerance.
+Geological Mapping & Landing UAV
+• Used ArUco markers, RGB-D sensing, and RTAB-Map to detect and land on the tallest rock.
+• Implemented in a ROS 2 and PX4-based system.
 
-    ### 10. **3D NeRF Reconstruction – Meteorite Dataset**
-    - **Goal**: Reconstruct a real-world object from 55-view dataset.
-    - **Tech**: Instant-NGP, Nerfacto, TensoRF, PyTorch.
-    - **Lesson**: NeRFs are powerful but sensitive to data quality, light consistency, and view coverage.
+Interview Ranker (Hackathon Winner)
+• Built a real-time AI system using Whisper.cpp, emotion recognition, and job-specific relevance scoring.
+• Won Best Use of MATLAB and 2nd overall prize.
 
-    ---
+Quadcopter Flight Control System (Simulink)
+• Developed a full 6-DOF controller with nested PID loops and motor mixer logic.
+• Validated using 3D model simulation.
 
-    # 🏆 Awards & Publications
+Wrist Band Monitoring System (Jabil)
+• Designed a robust safety interlock with quick swap-out capability.
+• Minimized factory downtime by enabling independent diagnostics and hardware replacement.
 
-    ### ▶ Publications
-    - **ICRA 2025** – “Towards Robotic Trash Removal with ASVs”  
-    - **Springer (Techno-Societal)** – Autonomous Vehicle overview  
-    - **IJIDeM 2023** – Robotics in waste sorting  
-    - **Hackster.io Feature** – MyCobot Pro maze navigation  
+3D NeRF Reconstruction (Meteorite Dataset)
+• Trained and compared Instant-NGP, TensoRF, and Nerfacto on a 55-view real-world dataset.
+• Analyzed effects of lighting and coverage on NeRF quality.
 
-    ### ▶ Competitions
-    - **InnovationHacks 2025**:  
-    🥇 Best Use of MATLAB  
-    🥈 2nd Prize for Job Platform Innovation
+---
 
-    ### ▶ Academic Achievements
-    - **Gold Medalist** – MIT-WPU  
-    - **NAMU Scholar** – $10,000 merit-based grant  
-    - **ASU Engineering Fellowship** – $1,000  
-    - **3× Merit Scholarships** for academic excellence
+Academic Highlights
 
-    ---
+Gold Medalist – B.Tech in Robotics & Automation, MIT-WPU  
+NAMU Scholar – $10,000 merit grant  
+ASU Engineering Fellowship – $1,000  
+3× Academic Merit Scholarships
 
-    # 🧠 Key Takeaways
+Capstone: Robotic Arm for Waste Sorting Using Computer Vision
+• Designed, built, and programmed a vision-based sorting robot using YOLOv7.
+• Combined mechanical design, microcontroller programming, and AI-based perception.
 
-    - 💡 **Modularity matters**: Systems fail less when they’re easy to swap and fix.
-    - 🎯 **Latency destroys trust**: Every robot-user interface must feel instant or predictive.
-    - 🔁 **Sim-to-real gap is real**: Iteration and tuning make the difference.
-    - 🧩 **True autonomy is full-stack**: CV, control, planning, UI, all connected.
-    - ⚙️ **Perception enables planning**: Good detection lets robots make informed decisions.
+Publications:
+• ICRA 2025 – "Towards Robotic Trash Removal with ASVs"
+• Springer – Autonomous Vehicles overview
+• IJIDeM – Robotics in Waste Sorting
+• Hackster.io – Featured MyCobot maze navigation
 
-    ---
+Research Contributions:
+• "Overview of Autonomous Vehicles and its Challenges" – Springer Techno-Societal Conference
+• "State-of-the-Art Review on Robotics in Waste Sorting" – IJIDeM
 
-    # 🌍 Career Vision
+---
 
-    ### 🚀 Dream Companies
-    - Google DeepMind, NVIDIA Robotics, Amazon Robotics, Tesla Autopilot, Intel Labs, Boston Dynamics
+Key Takeaways from Experience
 
-    ### 👨‍💻 Ideal Roles
-    - Robotics Software Engineer  
-    - Perception/Computer Vision Engineer  
-    - Applied AI/ML Researcher (robotics focus)
+• Modularity improves reliability and debugging.
+• Latency destroys trust — predictive control helps.
+• Simulation needs tight tuning to match real-world performance.
+• Perception quality directly impacts planning and control.
+• Every robot system is full-stack: sensing, control, computation, and interface.
 
-    ### 🔬 Research Interests
-    - Embodied AI  
-    - Real-time 3D Perception  
-    - Sim-to-Real Transfer  
-    - Agentic AI (autonomous agents that reason and act)
+---
 
-    ### 🔭 Long-Term Vision
-    > “I want to build intelligent field robots that operate safely and robustly in chaotic environments — whether for disaster relief, environmental recovery, or outdoor exploration.”
+Career Goals
 
-    ---
+Dream Companies:
+• Google DeepMind, NVIDIA Robotics, Amazon Robotics, Tesla Autopilot, Intel Labs
 
-    # 📬 Contact
+Preferred Roles:
+• Robotics Software Engineer
+• Perception / Vision Engineer
+• AI/ML Researcher in Robotics
 
-    - **Email**: chinmay.amrutkar@asu.edu  
-    - **GitHub**: https://github.com/ChinmayAmrutkar
-    - **LinkedIn**: https://www.linkedin.com/in/chinmay-amrutkar-153375209
-    </script>
+Interests:
+• Embodied AI and reasoning agents
+• Sim-to-Real learning
+• Real-time 3D perception
+• Autonomous field robots for unstructured environments
+
+Long-Term Vision:
+To design intelligent, robust, and socially impactful robots for chaotic environments like disaster zones, lakes, forests, and industrial lines — blending perception, reasoning, and control.
+
+</script>
     <!-- END OF AI KNOWLEDGE BASE -->
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
