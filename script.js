@@ -3,71 +3,28 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- Initialize AOS (Animate On Scroll) ---
-    // This function finds elements with 'data-aos' attributes and animates them
-    // when they enter the viewport.
     AOS.init({
-        duration: 600,      // Animation duration in milliseconds
-        easing: 'ease-in-out', // Type of easing for the animation
-        once: true,         // Animate elements only once when they scroll into view
-        mirror: false,      // Do not animate out when scrolling past
-        anchorPlacement: 'top-bottom', // Trigger animation when the top of the element hits the bottom of the window
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false,
+        anchorPlacement: 'top-bottom',
     });
 
     // --- Initialize Swiper for Project Carousel ---
-    // This initializes the Swiper library on the element with the class 'swiper-container'.
     const swiper = new Swiper('.swiper-container', {
-        // Configuration options for the carousel
-        loop: false, // Don't loop back to the beginning after the last slide
-        slidesPerView: 1, // Default for mobile: 1 slide visible
+        loop: false,
+        slidesPerView: 1,
         slidesPerGroup: 1,
-        spaceBetween: 30, // Space between slides in pixels
-
-        // Settings for arranging slides in a grid
-        grid: {
-            rows: 1, // Default for mobile: 1 row
-        },
-
-        // Responsive breakpoints to change settings based on screen width
+        spaceBetween: 30,
+        grid: { rows: 1 },
         breakpoints: {
-            // For screens 768px wide or larger (tablets)
-            768: {
-                slidesPerView: 2,
-                slidesPerGroup: 2,
-                spaceBetween: 30,
-                grid: {
-                    rows: 2, // 2 rows on tablet
-                    fill: 'row',
-                },
-            },
-            // For screens 1024px wide or larger (desktops)
-            1024: {
-                slidesPerView: 3,
-                slidesPerGroup: 3,
-                spaceBetween: 40,
-                grid: {
-                    rows: 2, // 2 rows on desktop, creating the 2x3 grid
-                    fill: 'row',
-                },
-            }
+            768: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 30, grid: { rows: 2, fill: 'row' } },
+            1024: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 40, grid: { rows: 2, fill: 'row' } }
         },
-
-        // Enable navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-        // Optional: Add pagination dots for better usability
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-
-        // Improve accessibility
-        a11y: {
-            prevSlideMessage: 'Previous project',
-            nextSlideMessage: 'Next project',
-        },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        a11y: { prevSlideMessage: 'Previous project', nextSlideMessage: 'Next project' },
     });
 
 
@@ -77,20 +34,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuIcon = menuButton ? menuButton.querySelector('i') : null;
 
     if (menuButton && mobileMenu && menuIcon) {
-        // Toggle menu visibility when the button is clicked
         menuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Toggle the icon between hamburger (bars) and close (times)
             menuIcon.classList.toggle('fa-bars');
             menuIcon.classList.toggle('fa-times');
         });
 
-        // Add listeners to each link within the mobile menu
         const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden'); // Hide the menu when a link is clicked
-                // Reset the icon back to hamburger
+                mobileMenu.classList.add('hidden');
                 if (menuIcon.classList.contains('fa-times')) {
                     menuIcon.classList.remove('fa-times');
                     menuIcon.classList.add('fa-bars');
@@ -104,21 +57,15 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const hash = this.hash;
-
-            // Make sure it's a valid internal link
             if (hash.startsWith('#') && hash.length > 1) {
                  const targetElement = document.querySelector(hash);
-
                  if (targetElement) {
                     e.preventDefault();
                     const header = document.querySelector('header');
                     const headerOffset = header ? header.offsetHeight : 70;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
                     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-
-                    // Close mobile menu if it's open
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                          mobileMenu.classList.add('hidden');
                          if (menuIcon && menuIcon.classList.contains('fa-times')) {
@@ -139,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function changeNavOnScroll() {
         let currentSectionId = '';
         const scrollPosition = window.pageYOffset;
-
         sections.forEach(section => {
             if (section && typeof section.offsetTop === 'number') {
                 const sectionTop = section.offsetTop - headerOffsetForNav;
@@ -219,10 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chatInput.value = '';
         chatSendBtn.disabled = true;
 
-        // Add user message to history
         chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
-
-        // Get AI response
         getAIResponse();
     }
 
@@ -236,7 +179,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function getAIResponse() {
-        // Construct the payload with the system prompt and the latest user message.
         const payload = {
             contents: [
                 {
@@ -246,7 +188,15 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         };
 
-        const apiKey = ""; // This is intentionally left blank.
+        // --- CHANGE: ADD YOUR API KEY HERE ---
+        const apiKey = "AIzaSyCMj7cv8eCsH9mTzVSTn72Q6raTMZL1Ds4";
+        
+        if (apiKey === "PASTE_YOUR_API_KEY_HERE") {
+             addMessageToChat('ai', "The AI agent is not configured. The site owner needs to add an API key.");
+             chatSendBtn.disabled = false;
+             return;
+        }
+
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
         try {
@@ -257,12 +207,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (!response.ok) {
-                // Provide specific feedback for common errors.
                 if (response.status === 403) {
                      throw new Error(`API request failed: 403 Forbidden. This may be an API key or permission issue.`);
-                }
-                if (response.status === 400) {
-                     throw new Error(`API request failed: 400 Bad Request. Please check the data being sent.`);
                 }
                 throw new Error(`API request failed with status ${response.status}`);
             }
